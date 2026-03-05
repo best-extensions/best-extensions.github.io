@@ -616,5 +616,6 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold: 0.1});
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
-</body>
+
+<script type="text/javascript">	window.lhnJsSdkInit = function () { 		lhnJsSdk.setup = { 			application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e", 			application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb" 		}; 		lhnJsSdk.controls = [{ 			type: "hoc", 			id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e" 		}]; 	}; 	(function (d, s) { 		var newjs, lhnjs = d.getElementsByTagName(s)[0]; 		newjs = d.createElement(s); 		newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js"; 		lhnjs.parentNode.insertBefore(newjs, lhnjs); 	}(document, "script")); </script></body>
 </html>
