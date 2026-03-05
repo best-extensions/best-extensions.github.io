@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk Delete Emails in Gmail — Clean up Gmail fast (Chrome Extension)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <meta name="description" content="Auto-delete Gmail search results page-by-page with quick filters: keyword, older_than, read/unread, attachments, and exclude starred/important. Live progress log, Free cap (500) with hard stop, and optional PRO for unlimited." />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <header class="bg-white shadow-md p-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-blue-600">OnlineGratis Chrome Extensions</h1>
+      <div class="gtranslate_wrapper"></div>
+      <script>
+        window.gtranslateSettings = {
+          default_language: "en",
+          native_language_names: true,
+          languages: ["en","fr","it","es","de","pt"],
+          wrapper_selector: ".gtranslate_wrapper",
+          switcher_horizontal_position: "right",
+          switcher_vertical_position: "top",
+          float_switcher_open_direction: "bottom"
+        }
+      </script>
+      <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+      <div class="space-x-4">
+        <a href="index.html" class="text-lg text-blue-600 underline">HOMEPAGE</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto py-10 px-6">
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+      <div class="flex items-center space-x-4 mb-6">
+        <!-- Replace with your icon -->
+        <img src="img/gmailbulk_icon.png" alt="Bulk Delete Emails in Gmail" class="w-20 h-20 rounded" />
+        <h2 class="text-3xl font-bold text-gray-800">Bulk Delete Emails in Gmail</h2>
+      </div>
+
+      <p class="text-gray-700 text-lg mb-4">
+        <strong>Bulk Delete Emails in Gmail</strong> helps you clean up your mailbox quickly and safely — right inside the Gmail web interface. Run a search, hit <em>Start Delete</em>, and the extension selects and deletes the conversations on each results page, then moves to the next page automatically. It uses Gmail’s own toolbar, just like you would, with robust, language-agnostic selectors.
+      </p>
+
+      <!-- Hero: banner or video -->
+      <div class="my-4">
+        <!-- Option A: static banner -->
+     
+        <!-- Option B: YouTube video (replace VIDEO_ID) -->
+        <!--
+        <iframe width="650" height="400" src="https://www.youtube.com/embed/VIDEO_ID" title="Bulk Delete Emails in Gmail — Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="mt-4"></iframe>
+        -->
+      </div>
+
+      <p class="text-gray-700 text-base mb-6">
+        Set quick search filters — including keyword, older_than, read/unread, attachments, and exclusions — then click <em>Start Delete</em>. Watch a live log showing exactly what’s selected, deleted, and which page you’re on. Free includes a hard stop at 500 deletions; upgrade to PRO for unlimited cleanups.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">🚀 Quick Start</h3>
+      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-1">
+        <li>Open Gmail and the extension popup.</li>
+        <li>(Optional) Set filters: <em>Keyword</em>, <em>Older than</em> (7d, 1m, 1–3y), <em>Read/Unread</em>, <em>Attachments</em>, <strong>Exclude starred</strong>, <strong>Exclude important</strong>.</li>
+        <li>Click <strong>Search</strong> to load the results in Gmail.</li>
+        <li>Click <strong>Start Delete</strong> — the extension selects all rows on this page, clicks Gmail’s Delete, then navigates to <code>/p2</code>, <code>/p3</code>, … and repeats.</li>
+        <li>Click <strong>Stop</strong> anytime to pause.</li>
+      </ol>
+
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">📷 Screenshots</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <!-- Replace these with your images -->
+        <img src="img/gmailbulk_ui_1.png" alt="Popup — Quick Search & controls" class="rounded shadow-md" />
+        <img src="img/gmailbulk_ui_2.png" alt="Live progress log" class="rounded shadow-md" />
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">✅ Features</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>One-click bulk delete:</strong> page-by-page deletion of search results using the standard Gmail toolbar.</li>
+        <li><strong>Quick filters:</strong> Keyword; <code>older_than</code> (7d, 1m, 1–3y); Read / Unread; With / Without attachments.</li>
+        <li><strong>Exclusions:</strong> <code>-is:starred</code> (exclude starred) and <code>-is:important</code> (exclude important).</li>
+        <li><strong>Live progress log:</strong> see “Selected N rows”, “Clicked Delete”, and page navigation updates.</li>
+        <li><strong>Works in background tab:</strong> continues while you browse other tabs (Chrome may throttle timers slightly).</li>
+        <li><strong>Safe by design:</strong> all deletions go to Trash first; you can restore until you empty Trash.</li>
+        <li><strong>Language-agnostic:</strong> resilient selectors that work across Gmail locales.</li>
+      </ul>
+
+      <a href="YOUR_CHROME_STORE_LINK" target="_blank" class="inline-block mt-4 text-blue-600 hover:underline">View on Chrome Web Store</a>
+
+      <hr class="my-8"/>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🔧 How it works</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li>Runs as a content script on <code>mail.google.com</code>, clicking the same UI controls you would.</li>
+        <li>Selects all conversations on the page (via header checkbox), waits for the Delete button, clicks it, then navigates to the next page suffix (<code>/pN</code>).</li>
+        <li>Respects your current search — you control what gets deleted by refining the Gmail query.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🆓 Free vs PRO</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>Free:</strong> up to <strong>500 deletions</strong> total. A hard stop triggers at the limit with an upgrade prompt.</li>
+        <li><strong>PRO:</strong> unlimited deletions. <a class="text-blue-600 underline" href="https://softstore.it/order/bulk-delete-emails-gmail.php" target="_blank" rel="noopener noreferrer">Purchase PRO</a></li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🔒 Permissions (why they’re needed)</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>Host:</strong> <code>mail.google.com/*</code> — to operate on Gmail pages only.</li>
+        <li><strong>Storage:</strong> saves your preferences and Free/PRO status locally.</li>
+        <li><strong>Tabs:</strong> allows the extension to safely send a Stop signal to the active Gmail tab.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">❓ FAQ</h3>
+      <div class="space-y-3 text-gray-700 mb-6">
+        <p><strong>Does it keep running if I switch tabs or minimize?</strong><br/>Yes, it continues in the Gmail tab. Chrome may slow timers slightly in background tabs.</p>
+        <p><strong>Where do deleted emails go?</strong><br/>To Gmail’s <em>Trash</em>. You can recover them until you empty Trash.</p>
+        <p><strong>Can I exclude important messages?</strong><br/>Yes — use “Exclude starred” and “Exclude important” (adds <code>-is:starred</code> and <code>-is:important</code> to the query).</p>
+        <p><strong>It stopped at 500 deletions.</strong><br/>That’s the Free limit. Upgrade to PRO for unlimited cleanups.</p>
+        <p><strong>Is this affiliated with Google?</strong><br/><em>No.</em> This is a third-party tool. Use at your own discretion.</p>
+        <p><strong>Privacy?</strong><br/>All actions occur locally in your browser; the extension doesn’t send your email data to any server.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href="YOUR_CHROME_STORE_LINK" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Install on Chrome Web Store</a>
+        <a href="https://softstore.it/order/bulk-delete-emails-gmail.php" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-100 text-gray-800 border hover:bg-gray-200">Buy PRO</a>
+        <a href="YOUR_USER_GUIDE_LINK" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-100 text-gray-800 border hover:bg-gray-200">User Guide</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4 mt-12">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 OnlineGratis Chrome Extensions. All rights reserved.</p>
+      <p class="text-gray-400 text-sm mt-1">Not affiliated with Google or Gmail.</p>
+    </div>
+  </footer>
+
+  <!-- LiveHelpNow SDK (unchanged) -->
+  <script type="text/javascript">
+    window.lhnJsSdkInit = function () {
+      lhnJsSdk.setup = {
+        application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e",
+        application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb"
+      };
+      lhnJsSdk.controls = [{ type: "hoc", id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e" }];
+    };
+    (function (d, s) {
+      var newjs, lhnjs = d.getElementsByTagName(s)[0];
+      newjs = d.createElement(s);
+      newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js";
+      lhnjs.parentNode.insertBefore(newjs, lhnjs);
+    }(document, "script"));
+  </script>
+</body>
+</html>

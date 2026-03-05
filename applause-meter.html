@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applause Meter Karaoke – Chrome Extension | Measure Audience Applause</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --gold: #f5c842;
+      --gold2: #e8a020;
+      --bg-dark: #0a0a12;
+      --bg2: #12121e;
+      --green: #39e878;
+      --red: #ff3b5c;
+      --muted: #6b6d8a;
+    }
+
+    body { font-family: 'Oswald', sans-serif; }
+
+    /* ---- HERO ---- */
+    .hero {
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(245,200,66,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(57,232,120,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,200,66,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,200,66,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-stars { position: absolute; inset: 0; overflow: hidden; }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--d) ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: var(--o); }
+      50% { opacity: calc(var(--o) * 0.2); }
+    }
+
+    .gauge-demo {
+      position: relative;
+      width: 280px;
+      height: 155px;
+      flex-shrink: 0;
+    }
+
+    /* ---- SECTION CARDS ---- */
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(245,200,66,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(245,200,66,0.08);
+    }
+
+    /* ---- STEP BADGE ---- */
+    .step-badge {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #0a0a12;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(245,200,66,0.4);
+    }
+
+    /* ---- CTA BUTTON ---- */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #0a0a12;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 6px 30px rgba(245,200,66,0.35);
+    }
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 50px rgba(245,200,66,0.5);
+    }
+
+    /* ---- SCORE BAR ---- */
+    .score-bar-bg {
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    /* ---- WAVEFORM ANIM ---- */
+    .wave-bar {
+      width: 4px;
+      border-radius: 2px;
+      background: var(--gold);
+      animation: wave-bounce var(--d) ease-in-out infinite;
+      animation-delay: var(--delay);
+    }
+    @keyframes wave-bounce {
+      0%,100% { transform: scaleY(0.3); opacity: 0.4; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ---- NEEDLE ANIM ---- */
+    @keyframes needle-sweep {
+      0%   { transform: rotate(-90deg); }
+      40%  { transform: rotate(30deg); }
+      60%  { transform: rotate(60deg); }
+      80%  { transform: rotate(45deg); }
+      100% { transform: rotate(50deg); }
+    }
+    .needle-animated { animation: needle-sweep 3s ease-in-out forwards; transform-origin: bottom center; }
+
+    /* ---- PULSE DOT ---- */
+    .pulse-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse-ring 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(57,232,120,0.5); }
+      70%  { box-shadow: 0 0 0 10px rgba(57,232,120,0); }
+      100% { box-shadow: 0 0 0 0 rgba(57,232,120,0); }
+    }
+
+    /* Fade in on scroll — lightweight JS below */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<!-- ===== HEADER ===== -->
+<header class="bg-white shadow-md p-5">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600" style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">OnlineFree Chrome Extensions</h1>
+    <div class="gtranslate_wrapper"></div>
+    <script>
+      window.gtranslateSettings = {
+        "default_language":"en","native_language_names":true,
+        "languages":["en","fr","it","es","de","pt"],
+        "wrapper_selector":".gtranslate_wrapper",
+        "switcher_horizontal_position":"right",
+        "switcher_vertical_position":"top",
+        "float_switcher_open_direction":"bottom"
+      }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+    <a href="index.html" class="text-blue-600 underline text-lg">HOMEPAGE</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero py-16 md:py-24 px-6">
+  <div class="hero-grid"></div>
+  <div class="hero-stars" id="heroStars"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
+
+    <!-- Text -->
+    <div class="flex-1 text-center md:text-left">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+           style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);">
+        <div class="pulse-dot"></div>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;color:#f5c842;letter-spacing:2px;">KARAOKE SCORE SYSTEM</span>
+      </div>
+
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,88px);line-height:0.9;color:#f5c842;letter-spacing:4px;text-shadow:0 0 40px rgba(245,200,66,0.3);">
+        👏 APPLAUSE METER
+      </h2>
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,3vw,32px);color:rgba(255,255,255,0.5);letter-spacing:6px;margin-top:8px;">
+        KARAOKE CHROME EXTENSION
+      </p>
+
+      <p class="mt-6 text-lg leading-relaxed" style="color:rgba(255,255,255,0.75);font-weight:300;max-width:520px;">
+        Measure your audience's applause in real time and assign a score from <strong style="color:#f5c842;">0 to 10</strong> to each karaoke performer.
+        Animated gauge, automatic leaderboard and a public display screen for your second monitor.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-8 justify-center md:justify-start">
+        <a href="https://chromewebstore.google.com/detail/applausemeter/lpjflpalhedjpfkalegcneeaahgpkefc?authuser=0&hl=it"
+           target="_blank" class="cta-btn">
+          ⬇️ INSTALL FREE
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-6 mt-8 justify-center md:justify-start">
+        <div style="color:rgba(255,255,255,0.4);font-size:13px;display:flex;align-items:center;gap:6px;">
+          <span style="color:#39e878;">✓</span> Free
+        </div>
+        <div style="color:rgba(255,255,255,0.4);font-size:13px;display:flex;align-items:center;gap:6px;">
+          <span style="color:#39e878;">✓</span> No account required
+        </div>
+        <div style="color:rgba(255,255,255,0.4);font-size:13px;display:flex;align-items:center;gap:6px;">
+          <span style="color:#39e878;">✓</span> Works offline
+        </div>
+      </div>
+    </div>
+
+    <!-- Gauge Demo -->
+    <div class="flex-shrink-0 flex flex-col items-center gap-4">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(245,200,66,0.2);border-radius:20px;padding:28px 36px;backdrop-filter:blur(10px);">
+        <canvas id="heroGauge" width="280" height="155" style="display:block;"></canvas>
+        <div style="text-align:center;margin-top:4px;">
+          <div id="heroScore" style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#39e878;line-height:1;text-shadow:0 0 30px rgba(57,232,120,0.4);">8.7</div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:3px;">SCORE</div>
+        </div>
+      </div>
+
+      <!-- Waveform -->
+      <div style="display:flex;align-items:center;gap:3px;height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:0 14px;">
+        <span style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-right:8px;font-family:'Space Mono',monospace;">LISTENING</span>
+        <div class="pulse-dot" style="width:7px;height:7px;margin-right:8px;"></div>
+        <script>
+          // Waveform bars will be injected by JS below
+        </script>
+        <div id="waveformBars" style="display:flex;align-items:center;gap:3px;height:28px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="max-w-4xl mx-auto py-12 px-6">
+
+  <!-- Intro -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 fade-up">
+    <div class="flex items-center gap-4 mb-6">
+      <span style="font-size:52px;">👏</span>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-800">Applause Meter Karaoke</h2>
+        <p class="text-gray-500 text-sm tracking-widest uppercase mt-1">The ultimate scoring system for karaoke nights</p>
+      </div>
+    </div>
+
+    <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+      With <strong>Applause Meter</strong>, every karaoke night becomes a real competition! The extension listens to audience applause via the microphone and automatically assigns a <strong>score from 0 to 10</strong> to each performer, in real time.
+      An animated gauge shows the applause level as it rises, and the final leaderboard crowns the most beloved singer of the night.
+    </p>
+
+    <p class="text-gray-700 text-base mb-4 leading-relaxed">
+      The system uses an advanced audio analysis algorithm that distinguishes <strong>applause from booing</strong>: it measures energy in the typical applause frequency range (2kHz–10kHz), evaluates the spectral flatness of the signal, and penalises dominant low frequencies. The final score is calculated using the <strong>75th percentile</strong> of collected samples, rewarding peaks of enthusiasm.
+    </p>
+
+    <p class="text-gray-700 text-base leading-relaxed">
+      The <strong>Dual Screen</strong> feature lets you show the gauge and leaderboard on a separate monitor or projector, visible to the whole audience — perfect for karaoke nights, events, parties and amateur competitions. 🎤
+    </p>
+  </div>
+
+  <!-- How to use -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+      <span style="background:linear-gradient(135deg,#f5c842,#e8a020);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📋</span>
+      How to Use
+    </h3>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="step-badge">1</div>
+        <div>
+          <p class="font-semibold text-gray-800">Install the extension</p>
+          <p class="text-gray-600 text-sm mt-1">Download <a href="https://chromewebstore.google.com/detail/applausemeter/lpjflpalhedjpfkalegcneeaahgpkefc?authuser=0&hl=it" target="_blank" class="text-blue-600 underline">Applause Meter from the Chrome Web Store</a> and install it in Chrome.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="step-badge">2</div>
+        <div>
+          <p class="font-semibold text-gray-800">Open the Sidebar</p>
+          <p class="text-gray-600 text-sm mt-1">Click the 👏 icon in the Chrome toolbar. The side panel opens with the animated gauge.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="step-badge">3</div>
+        <div>
+          <p class="font-semibold text-gray-800">Enter the performer's name</p>
+          <p class="text-gray-600 text-sm mt-1">Type the name in the "Performer" field so it gets automatically saved to the leaderboard.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="step-badge">4</div>
+        <div>
+          <p class="font-semibold text-gray-800">Choose the duration and start listening</p>
+          <p class="text-gray-600 text-sm mt-1">Select the duration (3 / 5 / 8 / 10 seconds) and press <strong>"START LISTENING"</strong>. The extension enters listening mode and the needle moves in real time.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="step-badge">5</div>
+        <div>
+          <p class="font-semibold text-gray-800">Score is assigned automatically</p>
+          <p class="text-gray-600 text-sm mt-1">When time is up, the algorithm calculates the final score and adds it to the leaderboard.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="step-badge">6</div>
+        <div>
+          <p class="font-semibold text-gray-800">Use the Dual Screen for the audience</p>
+          <p class="text-gray-600 text-sm mt-1">Press the <strong>"DUAL SCREEN"</strong> button to open a fullscreen page to project — featuring a giant gauge, score and live leaderboard.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Screenshots placeholder -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6">📷 Screenshots</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <img src="img/applausemeter1.png" alt="Applause Meter – Sidebar with gauge" class="rounded-xl shadow-md w-full" onerror="this.style.display='none'" />
+      <img src="img/applausemeter2.png" alt="Applause Meter – Dual screen for audience" class="rounded-xl shadow-md w-full" onerror="this.style.display='none'" />
+    </div>
+  </div>
+
+  <!-- Features grid -->
+  <div class="mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">✨ Key Features</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" style="background:var(--bg-dark);border-radius:20px;padding:24px;">
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🎙️</div>
+        <p class="font-semibold" style="color:#f5c842;">Smart Applause Detection</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Audio algorithm that analyses frequencies, spectrum and intensity to separate applause from booing and background noise.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🏎️</div>
+        <p class="font-semibold" style="color:#f5c842;">Real-time Animated Gauge</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">The needle moves smoothly during listening, with a red-to-green colour scale and live waveform.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🔢</div>
+        <p class="font-semibold" style="color:#f5c842;">Score from 0 to 10</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Final score calculated using the 75th percentile to reward peaks of enthusiasm, not just the average.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🏆</div>
+        <p class="font-semibold" style="color:#f5c842;">Automatic Leaderboard</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Every score is automatically saved with the performer's name and sorted from best to worst.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">📺</div>
+        <p class="font-semibold" style="color:#f5c842;">Dual Screen for the Audience</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Open a fullscreen page with a giant gauge, score and leaderboard — to project on an external screen or TV.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🎊</div>
+        <p class="font-semibold" style="color:#f5c842;">Confetti for High Scores</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">When the score is ≥ 8, the public screen bursts with colourful confetti to celebrate the performer!</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">⏱️</div>
+        <p class="font-semibold" style="color:#f5c842;">Configurable Listening Duration</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Choose between 3, 5, 8 or 10 seconds of listening depending on the needs of the night.</p>
+      </div>
+
+      <div class="feature-card p-5">
+        <div class="text-2xl mb-2">🔒</div>
+        <p class="font-semibold" style="color:#f5c842;">Full Privacy</p>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Everything processed locally in the browser. No data sent to external servers. No account required.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Leaderboard demo -->
+  <div class="mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">🏆 Sample Leaderboard</h3>
+    <div style="background:var(--bg-dark);border-radius:20px;padding:24px;max-width:480px;margin:0 auto;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#f5c842;letter-spacing:4px;text-align:center;margin-bottom:16px;">TONIGHT'S LEADERBOARD</div>
+      <div style="display:flex;flex-direction:column;gap:10px;" id="lbDemo"></div>
+    </div>
+  </div>
+
+  <!-- Perfect for -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-4">🎯 Perfect For</h3>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Karaoke nights in pubs and venues</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Private parties and birthdays</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Amateur karaoke competitions</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Wedding and event entertainment</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Singing schools and music recitals</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Corporate talent shows and team building</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Carnival and Halloween parties</li>
+      <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Professional entertainers and hosts</li>
+    </ul>
+  </div>
+
+  <!-- Privacy -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 mb-10 fade-up">
+    <h3 class="text-2xl font-bold text-gray-800 mb-4">🔒 Privacy & Security</h3>
+    <ul class="space-y-2 text-gray-700">
+      <li class="flex items-center gap-2"><span class="text-green-500 font-bold">✓</span> Works entirely in the browser — no uploads to external servers</li>
+      <li class="flex items-center gap-2"><span class="text-green-500 font-bold">✓</span> Microphone audio is processed locally only and never recorded</li>
+      <li class="flex items-center gap-2"><span class="text-green-500 font-bold">✓</span> No account, no sign-up required</li>
+      <li class="flex items-center gap-2"><span class="text-green-500 font-bold">✓</span> No personal data collection</li>
+    </ul>
+  </div>
+
+  <!-- CTA finale -->
+  <div class="text-center py-10 fade-up" style="background:var(--bg-dark);border-radius:24px;padding:48px 24px;">
+    <div style="font-size:48px;margin-bottom:16px;">👏</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:42px;color:#f5c842;letter-spacing:4px;line-height:1;">
+      READY TO MEASURE<br>THE APPLAUSE?
+    </h3>
+    <p style="color:rgba(255,255,255,0.55);margin:16px auto 32px;max-width:420px;font-weight:300;">
+      Install Applause Meter for free and make every karaoke night unforgettable!
+    </p>
+    <a href="https://chromewebstore.google.com/detail/applausemeter/lpjflpalhedjpfkalegcneeaahgpkefc?authuser=0&hl=it"
+       target="_blank" class="cta-btn">
+      ⬇️ INSTALL FREE FROM CHROME WEB STORE
+    </a>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-gray-800 text-white py-5 mt-12">
+  <div class="max-w-7xl mx-auto text-center">
+    <p>&copy; 2025 OnlineFree Chrome Extensions. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ---- Stars ----
+const starsEl = document.getElementById('heroStars');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--o:${(Math.random()*0.5+0.1).toFixed(2)};--d:${(Math.random()*4+2).toFixed(1)}s;`;
+  starsEl.appendChild(s);
+}
+
+// ---- Waveform bars ----
+const wfEl = document.getElementById('waveformBars');
+const wfHeights = [0.3,0.6,1,0.8,0.5,0.9,0.7,0.4,0.8,1,0.6,0.3,0.7,0.9,0.5];
+wfHeights.forEach((h, i) => {
+  const b = document.createElement('div');
+  b.className = 'wave-bar';
+  b.style.cssText = `height:${Math.round(h*24)}px;--d:${(0.4+i*0.07).toFixed(2)}s;--delay:${(i*0.06).toFixed(2)}s;`;
+  wfEl.appendChild(b);
+});
+
+// ---- Hero Gauge ----
+(function() {
+  const canvas = document.getElementById('heroGauge');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 280, H = 155;
+  const cx = 140, cy = 148;
+  const R = 112, r = 74;
+
+  const segments = [
+    {from:0,to:.2,color:'#ff3b5c'},{from:.2,to:.4,color:'#ff8c42'},
+    {from:.4,to:.6,color:'#f5c842'},{from:.6,to:.8,color:'#a8e63d'},
+    {from:.8,to:1,color:'#39e878'}
+  ];
+
+  let needle = Math.PI;
+  let target = Math.PI + (8.7/10)*Math.PI;
+  let started = false;
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+
+    // background arc
+    ctx.beginPath();
+    ctx.arc(cx,cy,R,Math.PI,0,false);
+    ctx.arc(cx,cy,r,0,Math.PI,true);
+    ctx.fillStyle='rgba(255,255,255,0.04)';
+    ctx.fill();
+
+    // segments
+    segments.forEach(seg => {
+      const a1=Math.PI+seg.from*Math.PI, a2=Math.PI+seg.to*Math.PI;
+      ctx.beginPath();
+      ctx.arc(cx,cy,R,a1,a2,false);
+      ctx.arc(cx,cy,r,a2,a1,true);
+      ctx.fillStyle=seg.color;
+      ctx.globalAlpha=0.9;ctx.fill();ctx.globalAlpha=1;
+    });
+
+    // dividers
+    for(let i=1;i<5;i++){
+      const a=Math.PI+(i/5)*Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+      ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+      ctx.strokeStyle='rgba(10,10,18,0.7)';ctx.lineWidth=3;ctx.stroke();
+    }
+
+    // ticks
+    for(let i=0;i<=10;i++){
+      const a=Math.PI+(i/10)*Math.PI, isMajor=i%2===0;
+      ctx.beginPath();
+      ctx.moveTo(cx+(R+2)*Math.cos(a),cy+(R+2)*Math.sin(a));
+      ctx.lineTo(cx+(R+(isMajor?14:8))*Math.cos(a),cy+(R+(isMajor?14:8))*Math.sin(a));
+      ctx.strokeStyle=isMajor?'rgba(255,255,255,0.6)':'rgba(255,255,255,0.2)';
+      ctx.lineWidth=isMajor?2:1;ctx.stroke();
+      if(isMajor){
+        ctx.font='bold 9px "Space Mono",monospace';
+        ctx.fillStyle='rgba(255,255,255,0.5)';
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(i,cx+(R+24)*Math.cos(a),cy+(R+24)*Math.sin(a));
+      }
+    }
+
+    // needle
+    const nLen=R-4, nBack=14, pw=2.5;
+    const nx=cx+nLen*Math.cos(needle), ny=cy+nLen*Math.sin(needle);
+    const bx=cx-nBack*Math.cos(needle), by=cy-nBack*Math.sin(needle);
+    const perp=needle+Math.PI/2;
+    const sc=(needle-Math.PI)/Math.PI;
+    const col=sc<0.2?'#ff3b5c':sc<0.4?'#ff8c42':sc<0.6?'#f5c842':sc<0.8?'#a8e63d':'#39e878';
+    ctx.shadowColor=col;ctx.shadowBlur=10;
+    ctx.beginPath();
+    ctx.moveTo(bx+pw*Math.cos(perp),by+pw*Math.sin(perp));
+    ctx.lineTo(nx,ny);
+    ctx.lineTo(bx-pw*Math.cos(perp),by-pw*Math.sin(perp));
+    ctx.closePath();ctx.fillStyle='#fff';ctx.fill();
+    ctx.shadowBlur=0;
+
+    // hub
+    ctx.beginPath();ctx.arc(cx,cy,10,0,Math.PI*2);
+    ctx.fillStyle='#1a1a2e';ctx.fill();
+    ctx.strokeStyle='rgba(245,200,66,0.5)';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fillStyle='#f5c842';ctx.fill();
+  }
+
+  function animate() {
+    needle += (target - needle) * 0.06;
+    draw();
+    requestAnimationFrame(animate);
+  }
+
+  // Delay start for dramatic effect
+  setTimeout(() => animate(), 800);
+
+  // Cycle through scores for demo
+  const demoScores = [8.7, 6.2, 9.1, 4.5, 7.8];
+  let si = 0;
+  setInterval(() => {
+    si = (si+1) % demoScores.length;
+    const sc = demoScores[si];
+    target = Math.PI + (sc/10)*Math.PI;
+    const scoreEl = document.getElementById('heroScore');
+    const colors = ['#ff3b5c','#ff8c42','#f5c842','#a8e63d','#39e878'];
+    const ci = sc<2?0:sc<4?1:sc<6?2:sc<8?3:4;
+    if(scoreEl){ scoreEl.textContent = sc.toFixed(1); scoreEl.style.color=colors[ci]; scoreEl.style.textShadow=`0 0 30px ${colors[ci]}66`; }
+  }, 4000);
+
+  draw();
+})();
+
+// ---- Leaderboard demo ----
+(function(){
+  const data = [
+    {name:'Marco R.',score:9.1},{name:'Giulia T.',score:8.7},
+    {name:'Luca M.',score:7.8},{name:'Sara B.',score:6.2},{name:'Andrea P.',score:4.5}
+  ];
+  const el = document.getElementById('lbDemo');
+  const colors = s => s>=8?'#39e878':s>=6?'#a8e63d':s>=4?'#f5c842':s>=2?'#ff8c42':'#ff3b5c';
+  const medals = ['🥇','🥈','🥉','#4','#5'];
+  data.forEach((d,i) => {
+    const row = document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;';
+    const col = colors(d.score);
+    row.innerHTML = `
+      <div style="font-family:'Space Mono',monospace;font-size:15px;font-weight:700;width:28px;text-align:center;color:${i<3?['#ffd700','#c0c0c0','#cd7f32'][i]:'rgba(255,255,255,0.4)'};">${medals[i]}</div>
+      <div style="flex:1;font-size:16px;color:rgba(255,255,255,0.85);">${d.name}</div>
+      <div style="width:80px;height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div style="width:${(d.score/10)*100}%;height:100%;background:${col};border-radius:3px;transition:width 1s;"></div></div>
+      <div style="font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:${col};min-width:34px;text-align:right;">${d.score.toFixed(1)}</div>
+    `;
+    el.appendChild(row);
+  });
+})();
+
+// ---- Scroll fade-in ----
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

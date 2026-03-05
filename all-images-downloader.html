@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Images Downloader — Save Every Image (Chrome Extension)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <meta name="description" content="Scan any page, capture blob/data and <img src> images, live previews, filters and selection. Export as PDF or download files. Great for manga/comic sites — save chapters as a single PDF for offline reading." />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <header class="bg-white shadow-md p-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-blue-600">OnlineGratis Chrome Extensions</h1>
+      <div class="space-x-4">
+        <a href="index.html" class="text-lg text-blue-600 underline">HOMEPAGE</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto py-10 px-6">
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+      <div class="flex items-center space-x-4 mb-6">
+        <!-- Replace with your extension icon -->
+        <img src="img/all-images-downloader.png" alt="All Images Downloader" class="w-20 h-20 rounded" />
+        <h2 class="text-3xl font-bold text-gray-800">All Images Downloader</h2>
+      </div>
+
+      <p class="text-gray-700 text-lg mb-4">
+        <strong>All Images Downloader</strong> scans any webpage and grabs <em>every</em> image it can find — including tricky <code>blob:</code> and <code>data:</code> sources and classic <code>&lt;img src="http/https"&gt;</code>. You get a live gallery with size filters, quick selection, and two export modes: <strong>Save as PDF</strong> or <strong>Extract images</strong> to your Downloads. It also persists previews between sessions and stores originals in IndexedDB so your exports stay high‑quality even after reopening the popup.
+      </p>
+
+      <p class="text-gray-700 text-base mb-4">
+        This is especially handy on modern sites with infinite scrolling, lazy‑loaded images, canvas rendering, or custom attributes (e.g. <code>data-url</code>). Bonus: it works great on online comic/manga readers — you can scan a chapter and export a clean, single <strong>PDF</strong> for comfy offline reading. 📚✨
+      </p>
+
+      <!-- Optional: YouTube demo (replace ID) -->
+      <!-- <div class="aspect-video w-full rounded-xl overflow-hidden mb-6">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/VIDEO_ID" title="All Images Downloader Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div> -->
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">🚀 Quick Start</h3>
+      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-1">
+        <li>
+          <a href="https://chromewebstore.google.com/detail/all-images-downloader/jgoopgdmnbnakllkkimbgnapedbmhfhb" target="_blank" class="inline-block text-blue-600 hover:underline">Install from the Chrome Web Store</a>
+          <span class="text-xs text-gray-500">(replace with your Web Store URL)</span>
+        </li>
+        <li>Pin the icon next to the address bar.</li>
+        <li>Open the popup and click <strong>SCAN</strong> — it auto‑scrolls to reveal lazy images and fills the gallery in real time.</li>
+        <li>Use <strong>Min W / Min H</strong> to skip tiny thumbnails, and select what you need.</li>
+        <li>Export: <strong>Save as PDF</strong> (one image per page, built in‑memory) or <strong>Extract images</strong> (saved to Downloads).</li>
+      </ol>
+
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">📷 Screenshots</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <!-- Replace with your screenshots -->
+        <img src="img/all-images-1.png" alt="Live scan and gallery" class="rounded shadow-md" />
+        <img src="img/all-images-2.png" alt="Filters, selection and export" class="rounded shadow-md" />
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">✅ Features</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>Blob & data</strong> support + standard <code>&lt;img src&gt;</code> (jpeg, png, webp, etc.).</li>
+        <li><strong>Auto‑scroll</strong> scanner with live previews; catches lazy‑loaded and dynamically injected images.</li>
+        <li><strong>Size filters</strong> (Min Width/Height) to skip small thumbnails.</li>
+        <li><strong>Select All / Deselect</strong> + per‑image checkboxes.</li>
+        <li><strong>Save as PDF</strong> (built directly, no print dialog) or <strong>Extract images</strong> to Downloads.</li>
+        <li><strong>Persistence</strong>: previews survive popup close; originals cached in <strong>IndexedDB</strong> for full‑res exports later.</li>c
+        <li><strong>FREE vs PRO</strong>: FREE adds a red "Watermark DEMO"; PRO removes it.</li>
+        <li><strong>Manga/Comics friendly</strong>: scan chapters and export a neat, single PDF for offline reading.</li>
+      </ul>
+
+      <a href="https://chromewebstore.google.com/detail/all-images-downloader/jgoopgdmnbnakllkkimbgnapedbmhfhb" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+        Go to Chrome Web Store
+      </a>
+      <span class="text-xs text-gray-500 ml-2"></span>
+
+      <hr class="my-8"/>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🔒 Permissions (and why)</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>activeTab</strong> — access the current page when you click SCAN.</li>
+        <li><strong>scripting</strong> — inject the lightweight scanner content script.</li>
+        <li><strong>downloads</strong> — save images and PDFs to your device.</li>
+        <li><strong>storage</strong> — remember settings, license status, and lightweight previews.</li>
+        <li><strong>Host permissions</strong> (<code>&lt;all_urls&gt;</code>) — allow reading images where CORS permits for watermark/PDF.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">❓ FAQ</h3>
+      <div class="space-y-3 text-gray-700 mb-6">
+        <p><strong>Will it work on manga/comic readers?</strong><br/>Yes. It’s designed for modern sites: blob/data images, <code>data-url</code> attributes, <em>canvas</em> rendering, and infinite scroll. Scan a chapter and save as a single PDF for comfy offline reading.</p>
+        <p><strong>Why are some images missing in the PDF?</strong><br/>Some sites block pixel access via CORS. In those cases the extension can still download the original URL (especially in PRO), but may skip embedding those images in the PDF or applying a watermark.</p>
+        <p><strong>Is my data tracked?</strong><br/>No accounts, no tracking. Everything runs locally in your browser. Settings are stored on your device.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href="https://chromewebstore.google.com/detail/all-images-downloader/jgoopgdmnbnakllkkimbgnapedbmhfhb" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Install from Chrome Web Store</a>
+        <a href="img/article-banner.png" target="_blank" class="text-blue-600 underline">ALL IMAGES DOWNLOADER</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4 mt-12">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 OnlineGratis Chrome Extensions. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

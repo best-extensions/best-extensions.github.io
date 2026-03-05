@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TradChart to CSV Exporter — Export TradingView Data (Chrome Extension)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <meta name="description" content="Export OHLC and Volume data from TradingView charts to CSV. Works with any symbol, timeframe and chart zoom. Free version (25 rows), PRO version with unlimited export." />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <header class="bg-white shadow-md p-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-blue-600">OnlineGratis Chrome Extensions</h1>
+      <div class="space-x-4">
+        <a href="index.html" class="text-lg text-blue-600 underline">HOMEPAGE</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto py-10 px-6">
+    <div class="bg-white p-6 rounded-xl shadow-lg">
+      <div class="flex items-center space-x-4 mb-6">
+        <!-- Replace with your extension icon -->
+        <img src="img/trading.png" alt="TradChart to CSV Exporter" class="w-20 h-20 rounded" />
+        <h2 class="text-3xl font-bold text-gray-800">TradChart to CSV Exporter</h2>
+      </div>
+
+      <p class="text-gray-700 text-lg mb-4">
+        <strong>TradChart to CSV Exporter</strong> lets you extract <strong>OHLC (Open, High, Low, Close)</strong> and <strong>Volume</strong> data directly from <strong>TradingView charts</strong> and save everything into a clean CSV file, ready for Excel, Google Sheets or any data-analysis tool.
+      </p>
+
+      <p class="text-gray-700 text-base mb-4">
+        The extension reads the live values from the TradingView legend while scanning across the chart, so you don’t need any API key or special integration. Just open a chart (e.g. <code>XAUUSD</code>, stocks, crypto, forex, indices), click <strong>Export</strong> and get a CSV with one row per bar, including OHLC and Volume. The FREE version exports the first <strong>25 rows</strong>; the PRO version removes this limit via a simple unlock code.
+      </p>
+
+      <!-- Optional: YouTube demo (replace ID) -->
+      <!-- <div class="aspect-video w-full rounded-xl overflow-hidden mb-6">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/VIDEO_ID" title="TradChart to CSV Exporter Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div> -->
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">🚀 Quick Start</h3>
+      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-1">
+        <li>
+          <a href="https://chromewebstore.google.com/detail/tradchart-to-csv-exporter/EXTENSION_ID" target="_blank" class="inline-block text-blue-600 hover:underline">Install from the Chrome Web Store</a>
+          <span class="text-xs text-gray-500">(replace with your Web Store URL)</span>
+        </li>
+        <li>Pin the extension icon next to the address bar.</li>
+        <li>Open a <strong>TradingView chart</strong> (any symbol, any timeframe) in your browser.</li>
+        <li>Click the extension icon and press <strong>Export Chart Data → CSV</strong>.</li>
+        <li>Wait for the scan to complete (you’ll see a <strong>progress bar</strong> and percentage), then open the downloaded CSV in Excel or Google Sheets.</li>
+      </ol>
+
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">📷 Screenshots</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <!-- Replace with your screenshots -->
+        <img src="img/trading1.png" alt="Popup on TradingView chart" class="rounded shadow-md" />
+        <img src="img/trading2.png" alt="Export progress and CSV example" class="rounded shadow-md" />
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">✅ Features</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li>Exports <strong>OHLC + Volume</strong> directly from TradingView charts.</li>
+        <li>Works with all symbols: <strong>forex, stocks, indices, crypto, commodities, futures</strong> and more.</li>
+        <li>Supports any timeframe (from 1m up to 1M), using the live TradingView legend.</li>
+        <li><strong>CSV output</strong> with header row (Index, Open, High, Low, Close, Volume) ready for Excel / Sheets.</li>
+        <li>Automatic detection of <strong>symbol / timeframe / exchange</strong> and inclusion in the CSV as title.</li>
+        <li>Built-in <strong>progress bar and percentage</strong> while scanning the chart.</li>
+        <li><strong>FREE vs PRO</strong>: FREE exports the first <strong>25 rows</strong>; PRO unlocks <strong>unlimited rows</strong>.</li>
+        <li><strong>Simple PRO unlock</strong>: enter the activation code once and the extension stays in PRO mode.</li>
+        <li>No TradingView API key required, no account or login integration needed.</li>
+      </ul>
+
+      <a href="https://chromewebstore.google.com/detail/tradchart-to-csv-exporter/EXTENSION_ID" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+        Go to Chrome Web Store
+      </a>
+      <span class="text-xs text-gray-500 ml-2"></span>
+
+      <hr class="my-8"/>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🔒 Permissions (and why)</h3>
+      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
+        <li><strong>activeTab</strong> — access the current TradingView chart tab when you click Export.</li>
+        <li><strong>scripting</strong> — inject the lightweight content script that reads OHLC and Volume values from the page.</li>
+        <li><strong>storage</strong> — remember PRO activation status and basic settings.</li>
+        <li><strong>Host permissions</strong> (<code>https://*.tradingview.com/*</code>) — needed to interact with TradingView chart pages only.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">❓ FAQ</h3>
+      <div class="space-y-3 text-gray-700 mb-6">
+        <p>
+          <strong>Does it work on any website?</strong><br/>
+          No, this extension is specifically focused on <strong>TradingView charts</strong>. It reads the OHLC and Volume values from the TradingView UI and exports them to CSV.
+        </p>
+        <p>
+          <strong>Do I need a TradingView API key?</strong><br/>
+          No API key is required. The extension works by reading the values displayed in the chart legend while scanning across the chart.
+        </p>
+        <p>
+          <strong>Why do I only get 25 rows in the CSV?</strong><br/>
+          In the FREE version, export is limited to the first <strong>25 rows</strong> collected during the scan. You can unlock the <strong>PRO version</strong> with an activation code to remove this limit and export the full dataset.
+        </p>
+        <p>
+          <strong>Is my data tracked or uploaded anywhere?</strong><br/>
+          No. All processing happens locally in your browser. The extension does not send your chart data or CSV files to any external server. Settings (like PRO status) are stored on your device using Chrome storage.
+        </p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href="https://chromewebstore.google.com/detail/tradchart-to-csv-exporter/EXTENSION_ID" target="_blank" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Install from Chrome Web Store</a>
+        <a href="img/tradchart-banner.png" target="_blank" class="text-blue-600 underline">TRADCHART TO CSV EXPORTER</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4 mt-12">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 OnlineGratis Chrome Extensions. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
