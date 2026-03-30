@@ -6,16 +6,97 @@
   <title>TikTok Bot Pro - Auto Like, Comment, Follow & Extract Users</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+    /* TikTok-inspired gradient accent */
+    .tiktok-gradient {
+      background: linear-gradient(135deg, #ff0050 0%, #00f2ea 100%);
+    }
+    .tiktok-text {
+      background: linear-gradient(135deg, #ff0050, #00f2ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .badge-pro {
+      background: linear-gradient(135deg, #ff0050, #ff6b00);
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    /* Feature step card */
+    .step-card {
+      position: relative;
+      border-left: 3px solid transparent;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .step-card:hover {
+      border-left-color: #ff0050;
+      box-shadow: 0 8px 32px rgba(255,0,80,.12);
+      transform: translateX(4px);
+    }
+    .step-num {
+      width: 2.2rem; height: 2.2rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    /* Screenshot modal */
+    .screenshot-thumb {
+      cursor: zoom-in;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .screenshot-thumb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 1000;
+      align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 12px; }
+
+    /* Unlock banner */
+    .unlock-banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border: 1px solid rgba(255,0,80,.35);
+    }
+
+    /* Sticky TOC dots */
+    .toc-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d1d5db; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .toc-dot:hover, .toc-dot.active { background: #ff0050; transform: scale(1.4); }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-  <header class="bg-white shadow-md p-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-blue-600">OnlineGratis Chrome Extensions</h1>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- ───────────── HEADER ───────────── -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-extrabold tracking-tight" style="font-family:Syne,sans-serif;">
+        <span class="tiktok-text">OnlineGratis</span> Chrome Extensions
+      </h1>
       <div class="gtranslate_wrapper"></div>
       <script>
         window.gtranslateSettings = {
-          "default_language":"en",
-          "native_language_names":true,
+          "default_language":"en","native_language_names":true,
           "languages":["en","fr","it","es","de","pt"],
           "wrapper_selector":".gtranslate_wrapper",
           "switcher_horizontal_position":"right",
@@ -24,124 +105,287 @@
         }
       </script>
       <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-      <div class="space-x-4">
-        <a href="index.html" class="text-lg text-blue-600 underline">HOMEPAGE</a>
-      </div>
+      <a href="index.html" class="text-blue-600 font-semibold hover:underline">← HOMEPAGE</a>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto py-10 px-6">
-    <div class="bg-white p-6 rounded-xl shadow-lg">
-      <div class="flex items-center space-x-4 mb-6">
-        <img src="img/tiktok-bot-pro.png" alt="TikTok Bot Pro Extension" class="w-20 h-20 rounded-xl" />
-        <h2 class="text-3xl font-bold text-gray-800">TikTok Bot Pro</h2>
-      </div>
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightbox-img" src="" alt="Screenshot" />
+  </div>
 
-      <p class="text-gray-700 text-lg mb-4">
-        Tired of spending hours on manual engagement? 🚀 <strong>TikTok Bot Pro</strong> is the ultimate automation tool 
-        that helps you grow your TikTok presence without the endless scrolling and clicking. 
-        This powerful Chrome extension automates likes, comments, follows, and even extracts user lists—all with just a few clicks.
-      </p>
+  <main class="max-w-3xl mx-auto py-10 px-4 sm:px-6">
 
-      <p class="text-gray-700 text-base mb-4">
-        Whether you're a content creator looking to expand your audience, a marketer managing multiple accounts, 
-        or simply someone who wants to grow their following efficiently, TikTok Bot Pro gives you the tools you need. 
-        The extension works directly within TikTok's interface, providing a seamless experience with a beautiful dark-themed overlay 
-        that lets you monitor progress in real-time.
-      </p>
+    <!-- ───────────── HERO CARD ───────────── -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+      <div class="tiktok-gradient h-2 w-full"></div>
+      <div class="p-6 sm:p-8">
+        <div class="flex items-center gap-5 mb-6">
+          <img src="img/tiktok-bot-pro.png" alt="TikTok Bot Pro" class="w-20 h-20 rounded-2xl shadow-md" />
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">TikTok Bot Pro</h2>
+            <p class="text-sm text-gray-500 mt-1">Chrome Extension · Auto Like · Comment · Follow · Extract</p>
+          </div>
+        </div>
 
-      <p class="text-gray-700 text-base mb-4">
-        One of the standout features is the <strong>User Extractor</strong> 📥. 
-        You can extract followers, following lists, users from hashtags, or even commenters from any post. 
-        Export them to a TXT file or use them directly for your automation campaigns. 
-        No more manual copying—everything is automated and organized.
-      </p>
-
-      <p class="text-gray-700 text-base mb-4">
-        The <strong>Auto Like</strong> and <strong>Auto Comment</strong> features let you engage with content automatically. 
-        Set your target (hashtag or user list), configure delays between actions to stay safe, and let the bot do the work. 
-        Import your own comment list from a TXT file and the extension will rotate through them naturally. 
-        You can even enable auto-like while commenting for maximum engagement!
-      </p>
-
-      <p class="text-gray-700 text-base mb-4">
-        Need to follow or unfollow users in bulk? The <strong>Bulk Follow/Unfollow</strong> feature handles it effortlessly. 
-        Load your user list, set the delay, and watch as the extension processes each profile automatically. 
-        Smart delays between actions help mimic human behavior and keep your account safe.
-      </p>
-
-      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">🔧 How to Use</h3>
-      <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-2">
-        <li>Install the extension from the <a href="https://chromewebstore.google.com/detail/tiktok-bot-pro-auto-like/hehglgeegjjgkjgoapphihpmpmkpkjpm" target="_blank" class="text-blue-600 hover:underline">Chrome Web Store</a></li>
-        <li>Open TikTok in your browser (the extension will open it automatically if not open)</li>
-        <li>Click the extension icon to open the control panel</li>
-        <li>Choose your task: Extract, Like, Comment, or Follow</li>
-        <li>Configure your settings (target, delays, user list)</li>
-        <li>Click Start and monitor progress in the floating popup</li>
-        <li>Stop anytime with the Stop button</li>
-      </ol>
-
-      <h3 class="text-2xl font-semibold text-gray-800 mb-4">📷 Screenshots</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-        <img src="img/tiktok-bot-pro1.png" alt="Screenshot 1" class="rounded shadow-md" />
-        <img src="img/tiktok-bot-pro2.png" alt="Screenshot 2" class="rounded shadow-md" />
-      </div>
-
-      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">✅ Features</h3>
-      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-        <li><strong>User Extractor:</strong> Extract followers, following, hashtag users, and commenters</li>
-        <li><strong>Auto Like:</strong> Automatically like posts by hashtag or from user list</li>
-        <li><strong>Auto Comment:</strong> Post comments with rotating message list</li>
-        <li><strong>Bulk Follow/Unfollow:</strong> Mass follow or unfollow from your user list</li>
-        <li><strong>Smart Delays:</strong> Configurable delays between actions (min/max range)</li>
-        <li><strong>User List Management:</strong> Save, import, export your target users</li>
-        <li><strong>Floating Progress Popup:</strong> Monitor tasks even when extension panel is closed</li>
-        <li><strong>Real-time Logs:</strong> See exactly what's happening with detailed logs</li>
-        <li><strong>Export to TXT:</strong> Export extracted users or your user list anytime</li>
-        <li><strong>Dark Theme UI:</strong> Beautiful, modern interface that's easy on the eyes</li>
-        <li><strong>Stop Anytime:</strong> Full control to pause or stop any operation</li>
-      </ul>
-
-      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">💡 Pro Tips</h3>
-      <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-        <li>Use realistic delays (5-15 seconds) to mimic human behavior</li>
-        <li>Don't run 24/7—take breaks between sessions</li>
-        <li>Start with small numbers and increase gradually</li>
-        <li>Mix automated and manual engagement for best results</li>
-        <li>Use quality, relevant comments—not spam</li>
-      </ul>
-
-      <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-        <h3 class="text-lg font-semibold text-purple-800 mb-2">🔓 Free vs Unlimited</h3>
-        <p class="text-gray-700">
-          The free version allows <strong>5 actions per session</strong>. 
-          Unlock unlimited usage with an activation code to remove all limits and supercharge your growth!
+        <p class="text-gray-700 text-lg mb-4">
+          Tired of spending hours on manual engagement? 🚀 <strong>TikTok Bot Pro</strong> is the ultimate automation tool
+          that helps you grow your TikTok presence without the endless scrolling and clicking.
+          This powerful Chrome extension automates likes, comments, follows, and even extracts user lists—all with just a few clicks.
         </p>
+        <p class="text-gray-700 mb-4">
+          Whether you're a content creator looking to expand your audience, a marketer managing multiple accounts,
+          or simply someone who wants to grow their following efficiently, TikTok Bot Pro gives you the tools you need.
+          The extension works directly within TikTok's interface, providing a seamless experience with a beautiful dark-themed overlay
+          that lets you monitor progress in real-time.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
+          <a href="https://chromewebstore.google.com/detail/tiktok-bot-pro-auto-like/hehglgeegjjgkjgoapphihpmpmkpkjpm"
+             target="_blank"
+             class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-7 rounded-xl transition text-base shadow">
+            ⬇️ Install Free from Chrome Web Store
+          </a>
+          <a href="https://store.payproglobal.com/checkout?products[1][id]=123691"
+             target="_blank"
+             class="inline-flex items-center justify-center gap-2 badge-pro py-3 px-7 rounded-xl transition text-base shadow">
+            🔓 Unlock PRO — Remove All Limits
+          </a>
+        </div>
       </div>
-
-      <p class="text-gray-700 mb-4">
-        With <strong>TikTok Bot Pro</strong>, growing your TikTok presence has never been easier. 
-        Save hours of manual work, engage with your target audience automatically, and focus on what matters most—creating great content. 
-        No complicated setup, no external software—just install, configure, and grow! 🚀
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mt-6">
-        <a href="https://chromewebstore.google.com/detail/tiktok-bot-pro-auto-like/hehglgeegjjgkjgoapphihpmpmkpkjpm" target="_blank" class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition text-center">
-          ⬇️ Install from Chrome Web Store
-        </a>
-      </div>
-
-      <p class="text-sm text-gray-500 mt-8">
-        ⚠️ <strong>Disclaimer:</strong> This tool is for educational purposes. Use responsibly and in accordance with TikTok's terms of service. 
-        The developers are not responsible for any account restrictions.
-      </p>
     </div>
+
+    <!-- ───────────── FEATURES LIST ───────────── -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-8">
+      <h3 class="text-2xl font-bold text-gray-900 mb-5">✅ Features</h3>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 text-sm">
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>User Extractor:</strong> Followers, following, hashtag users, commenters</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Auto Like:</strong> Like posts by hashtag or user list</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Auto Comment:</strong> Rotating comment list, fully automated</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Bulk Follow/Unfollow:</strong> Mass follow or unfollow from a list</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Smart Delays:</strong> Configurable min/max range between actions</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Export to TXT:</strong> Save extracted users anytime</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Floating Progress Popup:</strong> Monitor even when panel is closed</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Real-time Logs:</strong> See exactly what's happening</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Dark Theme UI:</strong> Modern, easy-on-the-eyes interface</span></li>
+        <li class="flex items-start gap-2"><span class="mt-1 text-green-500">✔</span><span><strong>Stop Anytime:</strong> Full control to pause or stop operations</span></li>
+      </ul>
+    </div>
+
+    <!-- ───────────── SCREENSHOTS GALLERY ───────────── -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-8">
+      <h3 class="text-2xl font-bold text-gray-900 mb-5">📷 Screenshots</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <img src="img/tiktok-bot-pro1.png" alt="Screenshot 1"
+             class="screenshot-thumb rounded-xl shadow" onclick="openLightbox(this.src)" />
+        <img src="img/tiktok-bot-pro2.png" alt="Screenshot 2"
+             class="screenshot-thumb rounded-xl shadow" onclick="openLightbox(this.src)" />
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         ───────────── COMPLETE GUIDE ─────────────
+         ═══════════════════════════════════════════════ -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+      <div class="tiktok-gradient h-1 w-full"></div>
+      <div class="p-6 sm:p-8">
+
+        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">📖 Complete Guide</h3>
+        <p class="text-gray-500 mb-8">Step-by-step walkthrough of every feature — click any screenshot to enlarge.</p>
+
+        <!-- ── STEP 0: Installation ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">0</div>
+            <h4 class="text-lg font-bold text-gray-800">Installation &amp; Setup</h4>
+          </div>
+          <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm ml-10">
+            <li>Install the extension from the <a href="https://chromewebstore.google.com/detail/tiktok-bot-pro-auto-like/hehglgeegjjgkjgoapphihpmpmkpkjpm" target="_blank" class="text-blue-600 hover:underline font-semibold">Chrome Web Store</a></li>
+            <li>Open TikTok in your browser (the extension opens it automatically if needed)</li>
+            <li>Click the extension icon in the toolbar to open the control panel</li>
+            <li>Choose your task from the panel tabs and configure settings</li>
+            <li>Click <strong>Start</strong> and monitor progress in the floating popup</li>
+            <li>Hit <strong>Stop</strong> at any time to pause the operation</li>
+          </ol>
+        </div>
+
+        <!-- ── STEP 1: Extract Followers ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">1</div>
+            <h4 class="text-lg font-bold text-gray-800">Extract TikTok Followers</h4>
+          </div>
+          <p class="text-gray-700 text-sm mb-4 ml-10">
+            Navigate to any TikTok profile and open the extension panel. Switch to the <strong>Extract</strong> tab,
+            select <em>Followers</em> as the source, set the maximum number of users to extract, and click <strong>Start</strong>.
+            The extension will automatically scroll through the follower list and collect usernames in real-time.
+            When done, click <strong>Export TXT</strong> to save the list — ready to use in any other automation tab.
+          </p>
+          <img src="https://best-extensions.github.io/img/T-extract-tiktok-followers.png"
+               alt="Extract TikTok Followers screenshot"
+               class="screenshot-thumb rounded-xl shadow-md w-full"
+               onclick="openLightbox(this.src)" />
+        </div>
+
+        <!-- ── STEP 2: Extract by Hashtag ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">2</div>
+            <h4 class="text-lg font-bold text-gray-800">Extract Users by Hashtag</h4>
+          </div>
+          <p class="text-gray-700 text-sm mb-4 ml-10">
+            Open the <strong>Extract</strong> tab and switch the source to <em>Hashtag</em>.
+            Type the hashtag (without the #) into the field, set how many users to collect, and press <strong>Start</strong>.
+            The extension will search TikTok for that hashtag, visit matching posts, and collect the authors' usernames —
+            giving you a targeted list of creators and potential followers already engaged with your niche.
+          </p>
+          <img src="https://best-extensions.github.io/img/T-extract-tiktok-user-by-hashtag.png"
+               alt="Extract TikTok users by hashtag screenshot"
+               class="screenshot-thumb rounded-xl shadow-md w-full"
+               onclick="openLightbox(this.src)" />
+        </div>
+
+        <!-- ── STEP 3: Auto Like ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">3</div>
+            <h4 class="text-lg font-bold text-gray-800">Auto Like</h4>
+          </div>
+          <p class="text-gray-700 text-sm mb-4 ml-10">
+            Head to the <strong>Like</strong> tab. Choose your target: a specific <em>Hashtag</em> or a <em>User List</em>
+            (paste usernames or import your previously extracted TXT file).
+            Configure the minimum and maximum delay between likes to mimic natural human behavior,
+            then click <strong>Start</strong>. The floating progress popup keeps you updated with a live counter even
+            when the panel is minimized. The free version allows 5 likes per session;
+            unlock PRO for unlimited daily actions.
+          </p>
+          <img src="https://best-extensions.github.io/img/T-auto-like-tiktok.png"
+               alt="Auto Like TikTok screenshot"
+               class="screenshot-thumb rounded-xl shadow-md w-full"
+               onclick="openLightbox(this.src)" />
+        </div>
+
+        <!-- ── STEP 4: Auto Comment ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">4</div>
+            <h4 class="text-lg font-bold text-gray-800">Auto Comment</h4>
+          </div>
+          <p class="text-gray-700 text-sm mb-4 ml-10">
+            Open the <strong>Comment</strong> tab. Add multiple comment texts (one per line or via TXT import) —
+            the extension rotates through them randomly to avoid spam detection.
+            Select your target (hashtag or user list), adjust delays, optionally enable
+            <em>Auto-Like while commenting</em> for double engagement, and press <strong>Start</strong>.
+            Real-time logs show each comment as it's posted so you always know what's happening.
+          </p>
+          <img src="https://best-extensions.github.io/img/T-auto-comment-tiktok.png"
+               alt="Auto Comment TikTok screenshot"
+               class="screenshot-thumb rounded-xl shadow-md w-full"
+               onclick="openLightbox(this.src)" />
+        </div>
+
+        <!-- ── STEP 5: Bulk Follow / Unfollow ── -->
+        <div class="step-card bg-gray-50 rounded-xl p-5 mb-6 pl-5">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="step-num tiktok-gradient text-white">5</div>
+            <h4 class="text-lg font-bold text-gray-800">Bulk Follow / Unfollow</h4>
+          </div>
+          <p class="text-gray-700 text-sm mb-4 ml-10">
+            Go to the <strong>Follow</strong> tab. Paste or import the list of usernames you want to target.
+            Select <em>Follow</em> or <em>Unfollow</em>, set the delay range between each action, and click <strong>Start</strong>.
+            The extension visits each profile automatically and clicks the follow/unfollow button.
+            Smart delays between actions simulate human browsing and help keep your account safe.
+            A great workflow: extract followers from a competitor profile → import the list here → bulk-follow them.
+          </p>
+          <img src="https://best-extensions.github.io/img/T-bulk-follow-unfollow-tiktok.png"
+               alt="Bulk Follow Unfollow TikTok screenshot"
+               class="screenshot-thumb rounded-xl shadow-md w-full"
+               onclick="openLightbox(this.src)" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ───────────── PRO TIPS ───────────── -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-8">
+      <h3 class="text-xl font-bold text-gray-900 mb-4">💡 Pro Tips</h3>
+      <ul class="space-y-2 text-gray-700 text-sm">
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Use realistic delays (5–15 seconds) to mimic human behavior</li>
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Don't run 24/7 — take breaks between sessions</li>
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Start with small numbers and increase gradually</li>
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Mix automated and manual engagement for best results</li>
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Use quality, relevant comments — not generic spam</li>
+        <li class="flex items-start gap-2"><span class="text-yellow-500 mt-0.5">★</span> Extract niche hashtag users first, then target them with follow + like for highest conversion</li>
+      </ul>
+    </div>
+
+    <!-- ───────────── UNLOCK PRO BANNER ───────────── -->
+    <div class="unlock-banner rounded-2xl p-6 sm:p-8 mb-8 text-white">
+      <div class="flex items-start gap-4">
+        <div class="text-4xl">🔓</div>
+        <div>
+          <h3 class="text-2xl font-extrabold mb-2" style="font-family:Syne,sans-serif;">Free vs Unlimited PRO</h3>
+          <p class="text-gray-300 mb-1">The free version allows <strong class="text-white">5 actions per session</strong>.</p>
+          <p class="text-gray-300 mb-5">Unlock <strong class="text-white">unlimited usage</strong> with an activation code — remove all limits and supercharge your growth!</p>
+          <a href="https://store.payproglobal.com/checkout?products[1][id]=123691"
+             target="_blank"
+             class="inline-flex items-center gap-2 badge-pro py-3 px-8 rounded-xl text-base font-bold shadow-lg hover:opacity-90 transition">
+            🚀 Buy Unlock Code — Go PRO
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ───────────── BOTTOM CTA ───────────── -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-8 text-center">
+      <p class="text-gray-700 mb-5">
+        With <strong>TikTok Bot Pro</strong>, growing your TikTok presence has never been easier.
+        Save hours of manual work, engage with your target audience automatically, and focus on what matters most — creating great content.
+        No complicated setup, no external software: just install, configure, and grow! 🚀
+      </p>
+      <a href="https://chromewebstore.google.com/detail/tiktok-bot-pro-auto-like/hehglgeegjjgkjgoapphihpmpmkpkjpm"
+         target="_blank"
+         class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md text-base">
+        ⬇️ Install Free from Chrome Web Store
+      </a>
+    </div>
+
+    <!-- ───────────── DISCLAIMER ───────────── -->
+    <p class="text-xs text-gray-400 text-center px-4">
+      ⚠️ <strong>Disclaimer:</strong> This tool is for educational purposes. Use responsibly and in accordance with TikTok's Terms of Service.
+      The developers are not responsible for any account restrictions.
+    </p>
+
   </main>
 
-  <footer class="bg-gray-800 text-white py-4 mt-12">
+  <footer class="bg-gray-800 text-white py-4 mt-8">
     <div class="max-w-7xl mx-auto text-center">
-      <p>&copy; 2026 Best Chrome Extensions. All rights reserved.</p>
+      <p class="text-sm">&copy; 2026 Best Chrome Extensions. All rights reserved.</p>
     </div>
-</footer>
-<script type="text/javascript">	window.lhnJsSdkInit = function () { 		lhnJsSdk.setup = { 			application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e", 			application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb" 		}; 		lhnJsSdk.controls = [{ 			type: "hoc", 			id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e" 		}]; 	}; 	(function (d, s) { 		var newjs, lhnjs = d.getElementsByTagName(s)[0]; 		newjs = d.createElement(s); 		newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js"; 		lhnjs.parentNode.insertBefore(newjs, lhnjs); 	}(document, "script")); </script></body>
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+  </script>
+
+  <script type="text/javascript">
+    window.lhnJsSdkInit = function () {
+      lhnJsSdk.setup = {
+        application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e",
+        application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb"
+      };
+      lhnJsSdk.controls = [{ type: "hoc", id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e" }];
+    };
+    (function (d, s) {
+      var newjs, lhnjs = d.getElementsByTagName(s)[0];
+      newjs = d.createElement(s);
+      newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js";
+      lhnjs.parentNode.insertBefore(newjs, lhnjs);
+    }(document, "script"));
+  </script>
+</body>
 </html>
