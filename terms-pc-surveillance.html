@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions – PC Surveillance: Webcam Motion Detection & Alerts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            max-width: 900px;
+            padding: 20px 30px;
+            line-height: 1.7;
+            color: #222;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #1a1a1a;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+            margin-top: 36px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p { margin-bottom: 14px; }
+        ul, ol { margin-bottom: 14px; padding-left: 24px; }
+        li { margin-bottom: 6px; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 0.93em;
+        }
+        table th {
+            background: #f0f0f0;
+            text-align: left;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+        }
+        table td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+        .highlight-box {
+            background: #f8f8f8;
+            border-left: 4px solid #007BFF;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            border-radius: 0 6px 6px 0;
+        }
+        .top-left {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+        }
+        a { text-decoration: none; color: #007BFF; }
+        a:hover { text-decoration: underline; }
+        .last-updated {
+            text-align: center;
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .toc { background: #f9f9f9; padding: 16px 24px; border-radius: 6px; margin-bottom: 32px; }
+        .toc ol { margin: 0; }
+        .toc li { margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="top-left">
+    <a href="https://www.onlinegratis.net/">← Return to Homepage</a>
+</div>
+
+<h1>Terms and Conditions</h1>
+<p class="subtitle">PC Surveillance – Webcam Motion Detection &amp; Alerts | Chrome Extension</p>
+<p class="last-updated">Last Updated: March 31, 2026</p>
+
+<div class="highlight-box">
+    <strong>Summary for quick reference:</strong> This extension uses your webcam <em>only</em> when you actively start monitoring. All captured photos are saved locally on your device. No personal data is collected or sent to any server, except for email alerts (if you choose to enable them) which are delivered through EmailJS. A PRO license is available via PayProGlobal.
+</div>
+
+<div class="toc">
+    <strong>Table of Contents</strong>
+    <ol>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#scope">Scope and Single Purpose</a></li>
+        <li><a href="#permissions">Permissions &amp; Their Justification</a></li>
+        <li><a href="#privacy">Privacy Policy &amp; Data Handling</a></li>
+        <li><a href="#camera">Camera (Webcam) Access</a></li>
+        <li><a href="#local-storage">Local Storage &amp; Downloaded Files</a></li>
+        <li><a href="#emailjs">Third-Party Service: EmailJS</a></li>
+        <li><a href="#paypro">Third-Party Service: PayProGlobal (License &amp; Payments)</a></li>
+        <li><a href="#freemium">Free vs. PRO Features</a></li>
+        <li><a href="#refund">Refund Policy</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#updates">Updates and Changes</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#law">Governing Law</a></li>
+        <li><a href="#contact">Contact Information</a></li>
+    </ol>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="intro">1. Introduction</h2>
+<p>Welcome to <strong>PC Surveillance – Webcam Motion Detection &amp; Alerts</strong> (hereinafter "the Extension"), a Chrome browser extension developed and published by OnlineGratis. By installing, enabling, or using this Extension, you confirm that you have read, understood, and agree to be bound by these Terms and Conditions and the Privacy Policy contained herein.</p>
+<p>If you do not agree to these terms in their entirety, please uninstall the Extension immediately and do not use it.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="scope">2. Scope and Single Purpose</h2>
+<p>The Extension has a single, clearly defined purpose: to turn the user's PC webcam into a browser-based motion detection and surveillance tool. Its core functions are:</p>
+<ul>
+    <li>Real-time webcam motion detection using pixel-difference analysis.</li>
+    <li>Automatic photo capture when motion is detected (Motion Detection mode) or at user-defined time intervals (Interval Capture mode).</li>
+    <li>A full-screen CCTV-style live monitoring interface with timestamp overlay and motion level indicators.</li>
+    <li>A local photo gallery for reviewing, downloading, and deleting captured images.</li>
+    <li>Automatic saving of captured photos to the user's local <code>Downloads/MotionDetection</code> folder.</li>
+    <li><em>(PRO only)</em> Email alerts with the captured photo attached, powered by EmailJS.</li>
+</ul>
+<p>The Extension does not perform any function unrelated to the above. It does not read, modify, or interact with any web page content (no <code>activeTab</code> or host permission is used beyond what is strictly necessary for the camera monitor tab).</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="permissions">3. Permissions &amp; Their Justification</h2>
+<p>The Extension requests only the minimum permissions necessary to operate. The following table details each permission, why it is required, and how it is used:</p>
+
+<table>
+    <tr>
+        <th>Permission</th>
+        <th>Why it is needed</th>
+        <th>How it is used</th>
+    </tr>
+    <tr>
+        <td><strong>storage</strong></td>
+        <td>Required to save user settings persistently across sessions.</td>
+        <td>Stores detection mode, sensitivity level, interval duration, PRO license status, and EmailJS configuration entered by the user. No data is synced to Google servers (uses <code>chrome.storage.local</code> only).</td>
+    </tr>
+    <tr>
+        <td><strong>downloads</strong></td>
+        <td>Required to save captured photos to the user's local filesystem.</td>
+        <td>Each captured photo is automatically saved as a JPEG file to the <code>Downloads/MotionDetection/</code> folder with a date-time filename (e.g., <code>capture_20260331_143000.jpg</code>).</td>
+    </tr>
+    <tr>
+        <td><strong>notifications</strong></td>
+        <td>Required to display desktop alerts when motion is detected.</td>
+        <td>Shows a brief Chrome notification informing the user that a photo was captured. No notification data is sent externally.</td>
+    </tr>
+    <tr>
+        <td><strong>Camera (getUserMedia)</strong></td>
+        <td>Required to access the webcam feed for motion analysis and photo capture.</td>
+        <td>Camera access is requested <em>only</em> when the user explicitly clicks "Enable Monitoring". The stream is used solely within the Extension's monitor tab for motion detection and capture. It is never transmitted externally. Camera access stops immediately when the user clicks "Stop".</td>
+    </tr>
+</table>
+
+<p>No other permissions are requested or used. The Extension does <strong>not</strong> request <code>activeTab</code>, <code>tabs</code>, <code>history</code>, <code>cookies</code>, <code>webRequest</code>, <code>clipboardRead</code>, or any host permissions (<code>&lt;all_urls&gt;</code>).</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="privacy">4. Privacy Policy &amp; Data Handling</h2>
+
+<h3>4.1 Data We Do NOT Collect</h3>
+<p>OnlineGratis does <strong>not</strong> collect, process, store, or transmit any of the following:</p>
+<ul>
+    <li>Personal identification information (name, email address, IP address, location).</li>
+    <li>Webcam images, video streams, or any visual data captured by the Extension.</li>
+    <li>Browsing history, visited URLs, or any activity on websites other than the Extension's own monitor page.</li>
+    <li>Device identifiers, hardware fingerprints, or any analytics data.</li>
+    <li>Crash logs or diagnostic data sent to remote servers.</li>
+</ul>
+
+<h3>4.2 Data Stored Locally on Your Device</h3>
+<p>All data generated by the Extension is stored exclusively on your device:</p>
+<ul>
+    <li><strong>Extension settings</strong> (detection mode, sensitivity, interval): stored in <code>chrome.storage.local</code>. This data never leaves your browser.</li>
+    <li><strong>Captured photos</strong>: saved as JPEG files in your local <code>Downloads/MotionDetection/</code> folder and temporarily in <code>chrome.storage.local</code> (thumbnail gallery). You can delete them at any time from the built-in gallery or from your file system.</li>
+    <li><strong>EmailJS configuration</strong> (Service ID, Template ID, Public Key, recipient address): stored in <code>chrome.storage.local</code> if you choose to configure email alerts. This data is stored only on your device and is used solely to send alerts on your behalf.</li>
+    <li><strong>PRO license code</strong>: stored in <code>chrome.storage.local</code> after you enter it. It is validated locally and never transmitted to any verification server by this Extension.</li>
+</ul>
+
+<h3>4.3 Data Retention</h3>
+<p>All locally stored data persists until you:</p>
+<ul>
+    <li>Manually delete photos from the gallery or your Downloads folder.</li>
+    <li>Clear browser storage (via Chrome settings → Privacy and Security → Clear browsing data).</li>
+    <li>Uninstall the Extension (which automatically clears <code>chrome.storage.local</code> data).</li>
+</ul>
+
+<h3>4.4 No Remote Data Collection</h3>
+<p>The Extension does not make any network requests to OnlineGratis servers or any analytics, tracking, or advertising services. The only outbound network activity possible is:</p>
+<ul>
+    <li>Email alert delivery through EmailJS (see Section 7), if and only if you configure and enable it.</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="camera">5. Camera (Webcam) Access</h2>
+<p>Access to your device's camera is the core function of this Extension. We take this access seriously and operate under the following strict principles:</p>
+<ul>
+    <li><strong>Explicit activation only:</strong> The camera is accessed only when you click "Enable Monitoring". It is never accessed passively, at startup, or in the background.</li>
+    <li><strong>No recording beyond what you initiate:</strong> The Extension captures still photos (JPEG) only when motion is detected or at the interval you set. No continuous video recording is stored or transmitted.</li>
+    <li><strong>No streaming to external servers:</strong> The webcam feed is processed entirely within your browser tab. No video or image data is sent to any server (unless you have enabled email alerts via EmailJS, in which case the captured JPEG of that specific motion event is included in the email).</li>
+    <li><strong>Immediate stop on user request:</strong> Clicking "Stop" or closing the monitor tab immediately releases the camera stream.</li>
+    <li><strong>Browser-level control:</strong> You can revoke camera permission at any time via Chrome Settings → Privacy and Security → Site Settings → Camera, or via the permission icon in the address bar of the monitor tab.</li>
+</ul>
+<p><strong>Important notice on responsible use:</strong> You are solely responsible for using this Extension in compliance with all applicable laws regarding surveillance, recording, and privacy. Do not use this Extension to monitor individuals without their knowledge or consent where such monitoring is prohibited by law. The developer assumes no liability for unlawful use.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="local-storage">6. Local Storage &amp; Downloaded Files</h2>
+<p>Captured photos are saved automatically to your <code>Downloads/MotionDetection/</code> folder. File names follow the format <code>capture_YYYYMMDD_HHMMSS.jpg</code>. These files are entirely under your control. The Extension accesses them only to display thumbnails in the built-in gallery.</p>
+<p>You can delete photos individually or in bulk from within the gallery, or manually from your file system at any time. The Extension does not send these files to any server unless you have enabled email alerts (see Section 7).</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="emailjs">7. Third-Party Service: EmailJS</h2>
+<p>The PRO version of the Extension optionally integrates with <strong>EmailJS</strong> (<a href="https://www.emailjs.com" target="_blank" rel="noopener">emailjs.com</a>) to send email alerts with a photo attached when motion is detected.</p>
+
+<h3>7.1 How it works</h3>
+<ul>
+    <li>You must create your own free EmailJS account and obtain a Service ID, Template ID, and Public Key.</li>
+    <li>You enter these credentials into the Extension's popup. They are stored locally on your device only.</li>
+    <li>When motion is detected and email alerts are enabled, the Extension calls the EmailJS API directly from your browser, sending the alert to the email address you specified.</li>
+    <li>EmailJS's free tier allows up to 200 emails per month. A 15-second cooldown between alerts is enforced by the Extension to prevent spam.</li>
+</ul>
+
+<h3>7.2 Data shared with EmailJS</h3>
+<p>When an email alert is sent, the following data is transmitted to EmailJS servers:</p>
+<ul>
+    <li>The captured JPEG photo (embedded as a base64 data URL in the email body).</li>
+    <li>A timestamp of when the capture occurred.</li>
+    <li>The recipient email address you configured.</li>
+    <li>Your EmailJS Service ID, Template ID, and Public Key (used for authentication with your EmailJS account).</li>
+</ul>
+<p>This data is handled according to EmailJS's own Privacy Policy and Terms of Service, available at <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener">emailjs.com/legal/privacy-policy</a>. OnlineGratis has no control over and no access to data processed by EmailJS.</p>
+
+<h3>7.3 This feature is entirely optional</h3>
+<p>If you do not configure EmailJS, no data is ever sent externally. Email alerts are an opt-in PRO feature. You can disable email alerts at any time by toggling off "Send email on motion detection" in the Extension popup.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="paypro">8. Third-Party Service: PayProGlobal (License &amp; Payments)</h2>
+<p>Purchases of PRO licenses are processed exclusively by <strong>PayProGlobal</strong> (<a href="https://www.payproglobal.com" target="_blank" rel="noopener">payproglobal.com</a>), a third-party e-commerce and payment platform. OnlineGratis does not directly process or store any payment or billing information.</p>
+<ul>
+    <li>By completing a purchase through PayProGlobal, you agree to their <a href="https://www.payproglobal.com/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://www.payproglobal.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+    <li>PayProGlobal is responsible for the secure handling of your financial and billing information.</li>
+    <li>After purchase, PayProGlobal delivers a license key to the email address you provided at checkout. This key is entered into the Extension popup to unlock PRO features.</li>
+    <li>OnlineGratis receives only the information necessary to verify that a valid license has been issued (e.g., order confirmation), and does not receive your full payment details.</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="freemium">9. Free vs. PRO Features</h2>
+<p>The Extension operates on a freemium model. The following features are available in each tier:</p>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>FREE</th>
+        <th>PRO</th>
+    </tr>
+    <tr>
+        <td>Motion Detection</td>
+        <td>✅ Included</td>
+        <td>✅ Included</td>
+    </tr>
+    <tr>
+        <td>Interval Capture mode</td>
+        <td>✅ Included</td>
+        <td>✅ Included</td>
+    </tr>
+    <tr>
+        <td>CCTV-style live monitor</td>
+        <td>✅ Included</td>
+        <td>✅ Included</td>
+    </tr>
+    <tr>
+        <td>Photo gallery (view, download, delete)</td>
+        <td>✅ Included</td>
+        <td>✅ Included</td>
+    </tr>
+    <tr>
+        <td>Auto-save photos to Downloads folder</td>
+        <td>✅ Included</td>
+        <td>✅ Included</td>
+    </tr>
+    <tr>
+        <td>Photos per session</td>
+        <td>Up to 50</td>
+        <td>Unlimited</td>
+    </tr>
+    <tr>
+        <td>Capture cooldown</td>
+        <td>5 seconds</td>
+        <td>3 seconds</td>
+    </tr>
+    <tr>
+        <td>Email alerts with photo attached</td>
+        <td>❌ Not available</td>
+        <td>✅ Included</td>
+    </tr>
+</table>
+
+<p>The free trial is fully functional and allows you to evaluate all core motion detection and capture features before making any purchase decision.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="refund">10. Refund Policy</h2>
+<p>For digital goods — including software license keys — <strong>refunds cannot be issued once the license key has been generated and delivered</strong> to the customer. Activation keys constitute non-returnable digital products under standard e-commerce policy.</p>
+<p>We provide a free trial mode that allows you to fully evaluate the Extension's compatibility and functionality before making any purchase. By completing a purchase, you acknowledge that:</p>
+<ul>
+    <li>You have had the opportunity to test the Extension in free mode prior to purchase.</li>
+    <li>Delivery of the license key constitutes fulfillment of the order.</li>
+    <li>The transaction is final upon delivery of the license key.</li>
+</ul>
+<p>Exceptions may be considered at the sole discretion of OnlineGratis in cases of technical malfunction directly caused by the Extension that cannot be resolved through support. To request a review, contact us at <a href="mailto:webservice2t@gmail.com">webservice2t@gmail.com</a> within 14 days of purchase.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="children">11. Children's Privacy</h2>
+<p>This Extension is not directed at or intended for use by children under the age of 13. We do not knowingly collect any personal data from children. If you believe a child under 13 has used this Extension in a way that involves the transmission of personal data, please contact us immediately at <a href="mailto:webservice2t@gmail.com">webservice2t@gmail.com</a> so we can take appropriate action.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="updates">12. Updates and Changes</h2>
+<p>We reserve the right to update or modify these Terms and Conditions at any time. When changes are made, the "Last Updated" date at the top of this document will be revised. Continued use of the Extension after any update constitutes acceptance of the revised terms.</p>
+<p>Extension updates distributed through the Chrome Web Store may introduce new features, modify existing functionality, or change permission requirements. You will be notified of permission changes through the Chrome Web Store update mechanism.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="liability">13. Limitation of Liability</h2>
+<p>The Extension is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+<p>In no event shall OnlineGratis or its developers be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including but not limited to loss of data, loss of privacy, or damages arising from unauthorized surveillance) resulting from:</p>
+<ul>
+    <li>Use or inability to use the Extension.</li>
+    <li>Unauthorized access to your local files or camera by third parties.</li>
+    <li>Failures or interruptions in third-party services (EmailJS, PayProGlobal).</li>
+    <li>Misuse of the Extension in violation of applicable surveillance and privacy laws.</li>
+</ul>
+<p>Use of the Extension is entirely at your own risk.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="termination">14. Termination</h2>
+<p>We reserve the right to terminate or discontinue the Extension at any time, without prior notice. In the event of discontinuation, any locally stored data and downloaded photos will remain accessible on your device and are unaffected.</p>
+<p>Your right to use the Extension terminates automatically if you violate any provision of these Terms and Conditions.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="law">15. Governing Law</h2>
+<p>These Terms and Conditions are governed by and construed in accordance with applicable law. Disputes arising out of or relating to these terms shall be subject to the exclusive jurisdiction of the courts of competent jurisdiction.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="contact">16. Contact Information</h2>
+<p>If you have any questions, concerns, or requests regarding these Terms and Conditions or the privacy practices described herein, please contact us:</p>
+<ul>
+    <li><strong>Email:</strong> <a href="mailto:webservice2t@gmail.com">webservice2t@gmail.com</a></li>
+    <li><strong>Website:</strong> <a href="https://www.onlinegratis.net/" target="_blank" rel="noopener">www.onlinegratis.net</a></li>
+</ul>
+<p>We aim to respond to all inquiries within 5 business days.</p>
+
+<hr style="margin-top:40px; border:none; border-top:1px solid #ddd;">
+<p style="text-align:center; font-size:0.85em; color:#888;">© 2026 OnlineGratis. All rights reserved.<br>
+<a href="https://www.onlinegratis.net/">Homepage</a></p>
+
+</body>
+</html>
