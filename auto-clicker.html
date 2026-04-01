@@ -3,72 +3,659 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auto Clicker</title>
+  <title>Auto Clicker Pro - Professional Browser Auto Clicker | Chrome Extension</title>
+  <meta name="description" content="Auto Clicker Pro - The most powerful browser auto clicker. Multi-point clicking, randomized intervals, scheduler, HTML5 game support. Free Chrome extension." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script></head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-  <header class="bg-white shadow-md p-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-blue-600">OnlineGratis Chrome Extensions</h1>
-<div class="gtranslate_wrapper"></div>
-<script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"languages":["en","fr","it","es","de","pt"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right","switcher_vertical_position":"top","float_switcher_open_direction":"bottom"}</script>
-<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-      <div class="space-x-4">
-        <a href="index.html" class="text-lg text-blue-600 underline">HOMEPAGE</a>
-       
-      </div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4875027129723585" crossorigin="anonymous"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef0ff',
+              100: '#d9deff',
+              200: '#b3bcff',
+              300: '#8d9bff',
+              400: '#5b6dff',
+              500: '#4a5ae0',
+              600: '#3a47b8',
+              700: '#2d3690',
+              800: '#0f1117',
+              900: '#0a0c10',
+            },
+            surface: {
+              50: '#f8f9fc',
+              100: '#e8eaf0',
+              200: '#1e2130',
+              300: '#1a1d27',
+              400: '#252838',
+              500: '#2d3148',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; }
+
+    /* ── Animated gradient background ── */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91,109,255,0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(91,109,255,0.07), transparent),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(52,211,153,0.05), transparent),
+        #0a0c10;
+    }
+
+    /* ── Subtle grid pattern ── */
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(91,109,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,109,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ── Glowing card borders ── */
+    .glow-card {
+      background: linear-gradient(135deg, #1e2130, #1a1d27);
+      border: 1px solid rgba(91,109,255,0.12);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .glow-card:hover {
+      border-color: rgba(91,109,255,0.35);
+      box-shadow: 0 8px 40px rgba(91,109,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ── Feature icon glow ── */
+    .icon-glow {
+      background: rgba(91,109,255,0.1);
+      box-shadow: 0 0 20px rgba(91,109,255,0.15);
+    }
+
+    /* ── Animated entrance ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .anim-fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+    .anim-delay-1 { animation-delay: 0.1s; }
+    .anim-delay-2 { animation-delay: 0.2s; }
+    .anim-delay-3 { animation-delay: 0.3s; }
+    .anim-delay-4 { animation-delay: 0.4s; }
+    .anim-delay-5 { animation-delay: 0.5s; }
+
+    /* ── Pulsing dot ── */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* ── CTA button shimmer ── */
+    .btn-cta {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 4s infinite;
+    }
+    @keyframes shimmer {
+      0% { left: -60%; }
+      30%, 100% { left: 120%; }
+    }
+
+    /* ── Step connector line ── */
+    .step-line {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      width: 2px;
+      height: calc(100% - 28px);
+      background: linear-gradient(to bottom, rgba(91,109,255,0.4), rgba(91,109,255,0.05));
+    }
+
+    /* ── Keyboard key style ── */
+    .kbd {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(91,109,255,0.12);
+      border: 1px solid rgba(91,109,255,0.25);
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8em;
+      font-weight: 600;
+      color: #5b6dff;
+    }
+
+    /* ── Video container ── */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 1px solid rgba(91,109,255,0.15);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Screenshot hover ── */
+    .screenshot-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .screenshot-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 48px rgba(91,109,255,0.15);
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0c10; }
+    ::-webkit-scrollbar-thumb { background: #2d3148; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #5b6dff; }
+
+    /* ── Badge pulse ring ── */
+    @keyframes ring-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(52,211,153,0); }
+      100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+    }
+    .badge-pulse { animation: ring-pulse 2.5s infinite; }
+  </style>
+</head>
+<body class="bg-brand-900 text-surface-100 font-sans antialiased">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-brand-900/80 backdrop-blur-lg border-b border-surface-500/30">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-lg bg-brand-400 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-surface-100/70 group-hover:text-surface-100 transition-colors">OnlineGratis Chrome Extensions</span>
+      </a>
+      <nav class="flex items-center gap-6">
+        <a href="#features" class="text-sm text-surface-100/50 hover:text-surface-100 transition-colors hidden sm:block">Features</a>
+        <a href="#how-to-use" class="text-sm text-surface-100/50 hover:text-surface-100 transition-colors hidden sm:block">How to Use</a>
+        <a href="#video" class="text-sm text-surface-100/50 hover:text-surface-100 transition-colors hidden sm:block">Video</a>
+        <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank"
+           class="btn-cta inline-flex items-center gap-2 px-5 py-2 bg-brand-400 hover:bg-brand-500 text-white text-sm font-semibold rounded-lg transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Install Free
+        </a>
+      </nav>
+      <div class="gtranslate_wrapper"></div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto py-10 px-6">
-    <div class="bg-white p-6 rounded-xl shadow-lg">
-      <div class="flex items-center space-x-4 mb-6">
-        <img src="img/autoclicker.png" alt="Auto Clicker" class="w-20 h-20" />
-        <h2 class="text-3xl font-bold text-gray-800"> Auto Clicker</h2>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero-bg grid-pattern pt-28 pb-20 sm:pt-36 sm:pb-28 relative overflow-hidden">
+    <!-- Decorative circles -->
+    <div class="absolute top-20 right-10 w-72 h-72 rounded-full bg-brand-400/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+        <!-- Left: Text -->
+        <div class="flex-1 text-center lg:text-left">
+          <div class="anim-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+            <span class="text-emerald-400 text-xs font-semibold tracking-wide uppercase">Version 4.1 — Free Extension</span>
+          </div>
+
+          <h1 class="anim-fade-up anim-delay-1 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+            <span class="text-white">Auto Clicker</span><br>
+            <span class="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">Pro</span>
+          </h1>
+
+          <p class="anim-fade-up anim-delay-2 mt-6 text-lg sm:text-xl text-surface-100/60 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            The most powerful auto clicker for Chrome. Multi-point clicking, randomized intervals, scheduler, and full support for <strong class="text-surface-100/80">HTML5 games</strong> and canvas apps.
+          </p>
+
+          <div class="anim-fade-up anim-delay-3 mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank"
+               class="btn-cta inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-brand-400 hover:bg-brand-500 text-white font-bold rounded-xl text-base transition-all shadow-lg shadow-brand-400/20 hover:shadow-brand-400/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              Add to Chrome — It's Free
+            </a>
+            <a href="#video"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-surface-500 hover:border-brand-400/40 text-surface-100/70 hover:text-white rounded-xl text-base font-semibold transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Watch Demo
+            </a>
+          </div>
+
+          <div class="anim-fade-up anim-delay-4 mt-8 flex items-center gap-6 justify-center lg:justify-start text-sm text-surface-100/40">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              No signup required
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Works on all websites
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Lightweight
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: Extension popup preview -->
+        <div class="anim-fade-up anim-delay-4 flex-shrink-0">
+          <div class="relative">
+            <!-- Glow behind -->
+            <div class="absolute -inset-4 bg-brand-400/10 rounded-3xl blur-2xl"></div>
+            <img src="https://best-extensions.github.io/img/auto-click-step1.png"
+                 alt="Auto Clicker Pro popup interface"
+                 class="relative rounded-2xl shadow-2xl shadow-black/50 border border-surface-500/30 max-w-[300px]" />
+          </div>
+        </div>
       </div>
-      <p class="text-gray-700 text-lg mb-4">
-        Automate repetitive clicking tasks on your screen with ease! <strong>Auto Clicker</strong> lets you record a position and repeat clicks at custom intervals  great for games, testing, or automation.
-      </p>
-      <p class="text-gray-700 text-base mb-4">
-        Just click Record, select a position, and let it do the rest. This extension is lightweight, fast, and doesnt require any permissions outside the page.
-      </p>
-
-      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">📄How to Use</h3>
-      <ol class="list-decimal list-inside text-gray-700 mb-4">
-        <li>Install from the <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank" class="text-blue-600 hover:underline">Chrome Web Store</a>.</li>
-        <li>Click the extension icon and press Record.</li>
-        <li>Click on the screen where you want to automate the click.</li>
-        <li>Set the interval and press "Start" to begin auto-clicking.</li>
-        <li>Press <code>Q</code> to stop the process.</li>
-      </ol>
-
-      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-2">✅ Features</h3>
-      <ul class="list-disc list-inside text-gray-700 mb-6">
-        <li>Click any point on the screen at intervals</li>
-        <li>Simple recording and trigger system</li>
-        <li>Fast and lightweight</li>
-        <li>No extra permissions needed</li>
-        <li>Stop anytime with <code>Q</code></li>
-      </ul>
-
-      <h3 class="text-2xl font-semibold text-gray-800 mb-4">📷 Screenshots</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-        <img src="img/screenshots/auto-clicker-1.png" alt="Screenshot 1" class="rounded shadow-md" />
-        <img src="img/screenshots/auto-clicker-2.png" alt="Screenshot 2" class="rounded shadow-md" />
-      </div>
-
-      <p class="text-gray-700 mb-4">
-        Perfect for saving time on repetitive clicking tasks  start automating your browser clicks today!
-      </p>
-
-      <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank" class="inline-block mt-4 text-blue-600 hover:underline"> View on Chrome Web Store</a>
     </div>
-  </main>
+  </section>
 
-  <footer class="bg-gray-800 text-white py-4 mt-12">
-    <div class="max-w-7xl mx-auto text-center">
-      <p>&copy; 2026 Best Chrome Extensions. All rights reserved.</p>
+
+  <!-- ═══════════ FEATURES ═══════════ -->
+  <section id="features" class="py-20 sm:py-28 bg-brand-800 relative">
+    <div class="absolute inset-0 grid-pattern opacity-40"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="text-center mb-16">
+        <p class="text-brand-400 font-semibold text-sm tracking-wider uppercase mb-3">Everything you need</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Professional Auto Clicking Features</h2>
+        <p class="mt-4 text-surface-100/50 max-w-2xl mx-auto text-lg">Packed with advanced features for gamers, testers, and power users who need reliable browser automation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Feature 1 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Multi-Point Clicking</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Set multiple click positions and cycle through them in sequence. Perfect for games and complex automation workflows.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">HTML5 Game Support</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Full PointerEvent + MouseEvent chain simulation. Works with Canvas games, WebGL apps, and modern HTML5 game engines.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Randomized Intervals</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Add ±30% randomness to click intervals for a more natural, human-like clicking pattern. Toggle with one checkbox.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Scheduler</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Schedule auto-clicking sessions with precise start/stop times. Set it and forget it — the countdown runs in the background.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11h10M7 15h2M11 15h2M15 15h2"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Keyboard Shortcuts</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Start with <span class="kbd">Ctrl+Q</span> and stop with <span class="kbd">Ctrl+M</span> — no need to open the popup. Fully customizable.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Live Status Overlay</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">A floating overlay on the page shows real-time click count, total progress, and status — even when the popup is closed.</p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Click Types</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">Choose between left click, double click, and right click. Each type dispatches the full browser event chain for maximum compatibility.</p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Live Coordinate Tracking</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">See X/Y coordinates update in real-time as you move your mouse during position selection. Precise to the pixel.</p>
+        </div>
+
+        <!-- Feature 9 -->
+        <div class="glow-card rounded-2xl p-6">
+          <div class="icon-glow w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Privacy First</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">No data collection. No analytics. No server calls. Everything runs 100% locally in your browser. Your clicks, your business.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ HOW TO USE ═══════════ -->
+  <section id="how-to-use" class="py-20 sm:py-28 bg-brand-900 relative">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-brand-400 font-semibold text-sm tracking-wider uppercase mb-3">Get started in seconds</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">How to Use</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Step 1 -->
+        <div class="relative group">
+          <div class="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-brand-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-400/30 z-10">1</div>
+          <div class="glow-card rounded-2xl overflow-hidden">
+            <img src="https://best-extensions.github.io/img/auto-click-step1.png"
+                 alt="Step 1: Open the extension popup"
+                 class="w-full screenshot-card" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-base font-bold text-white mb-1">Set Your Position</h3>
+              <p class="text-surface-100/50 text-sm leading-relaxed">Open the popup, click <strong class="text-surface-100/70">Set Position</strong>, move your mouse to the target area on the page, and press <span class="kbd">Q</span> to confirm. Live coordinates are displayed as you move.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative group">
+          <div class="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-brand-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-400/30 z-10">2</div>
+          <div class="glow-card rounded-2xl overflow-hidden">
+            <img src="https://best-extensions.github.io/img/auto-click-step2.png"
+                 alt="Step 2: Configure settings"
+                 class="w-full screenshot-card" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-base font-bold text-white mb-1">Configure &amp; Start</h3>
+              <p class="text-surface-100/50 text-sm leading-relaxed">Set the interval, click type, total clicks, and optionally enable randomized timing. Press <strong class="text-surface-100/70">Start</strong> — the popup closes automatically and clicking begins.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative group">
+          <div class="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-brand-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-400/30 z-10">3</div>
+          <div class="glow-card rounded-2xl overflow-hidden">
+            <img src="https://best-extensions.github.io/img/auto-click-step3.png"
+                 alt="Step 3: Running with live overlay"
+                 class="w-full screenshot-card" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-base font-bold text-white mb-1">Monitor &amp; Stop</h3>
+              <p class="text-surface-100/50 text-sm leading-relaxed">A live overlay in the bottom-right shows real-time progress. Press <span class="kbd">Ctrl+M</span> to stop anytime — a "Stopped" notification confirms it.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ VIDEO ═══════════ -->
+  <section id="video" class="py-20 sm:py-28 bg-brand-800 relative">
+    <div class="absolute inset-0 grid-pattern opacity-30"></div>
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <div class="text-center mb-12">
+        <p class="text-brand-400 font-semibold text-sm tracking-wider uppercase mb-3">See it in action</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Video Tutorial</h2>
+        <p class="mt-4 text-surface-100/50 max-w-xl mx-auto">Watch a complete walkthrough of Auto Clicker Pro — from installation to automating clicks on HTML5 games.</p>
+      </div>
+
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/uzMLBNZaFbI"
+          title="Auto Clicker Pro - Video Tutorial"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ COMPARISON TABLE — FREE vs PRO ═══════════ -->
+  <section class="py-20 sm:py-24 bg-brand-900 relative">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-brand-400 font-semibold text-sm tracking-wider uppercase mb-3">Plans</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Free vs Pro</h2>
+      </div>
+
+      <div class="glow-card rounded-2xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-surface-500/30">
+              <th class="text-left p-4 text-surface-100/50 font-semibold">Feature</th>
+              <th class="p-4 text-center text-surface-100/50 font-semibold">Free</th>
+              <th class="p-4 text-center text-brand-400 font-semibold">
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.967.744L14.146 7.2 17.5 7.512a1 1 0 01.576 1.765l-2.518 2.117.741 3.36a1 1 0 01-1.504 1.094L12 13.766l-2.795 2.082a1 1 0 01-1.504-1.094l.741-3.36-2.518-2.117a1 1 0 01.576-1.765l3.354-.312 1.179-3.456A1 1 0 0112 2z" clip-rule="evenodd"/></svg>
+                  Pro
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="text-surface-100/70">
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Click interval</td>
+              <td class="p-4 text-center">Min 0.5s</td>
+              <td class="p-4 text-center text-emerald-400 font-semibold">Down to 0.01s</td>
+            </tr>
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Total clicks</td>
+              <td class="p-4 text-center">Max 100</td>
+              <td class="p-4 text-center text-emerald-400 font-semibold">Unlimited</td>
+            </tr>
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Multi-point positions</td>
+              <td class="p-4 text-center">Max 3</td>
+              <td class="p-4 text-center text-emerald-400 font-semibold">Unlimited</td>
+            </tr>
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Randomized intervals</td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+            </tr>
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Scheduler</td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+            </tr>
+            <tr class="border-b border-surface-500/15">
+              <td class="p-4">Keyboard shortcuts</td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+            </tr>
+            <tr>
+              <td class="p-4">HTML5 game support</td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+              <td class="p-4 text-center"><svg class="w-5 h-5 mx-auto text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="p-5 border-t border-surface-500/20 text-center">
+          <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank"
+             class="btn-cta inline-flex items-center gap-2 px-8 py-3 bg-brand-400 hover:bg-brand-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-400/20">
+            Get Started Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="py-20 sm:py-24 bg-brand-800 relative">
+    <div class="absolute inset-0 grid-pattern opacity-20"></div>
+    <div class="max-w-3xl mx-auto px-6 relative">
+      <div class="text-center mb-12">
+        <p class="text-brand-400 font-semibold text-sm tracking-wider uppercase mb-3">Common questions</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">FAQ</h2>
+      </div>
+
+      <div class="space-y-4">
+        <details class="glow-card rounded-xl group" open>
+          <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+            Does it work on HTML5 games and Canvas elements?
+            <svg class="w-5 h-5 text-brand-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-surface-100/50 text-sm leading-relaxed">
+            Yes! Auto Clicker Pro dispatches the full event chain including PointerEvents (pointermove, pointerdown, pointerup) and MouseEvents. This makes it compatible with modern HTML5 game engines, Canvas-based apps, and WebGL applications that other auto clickers can't handle.
+          </div>
+        </details>
+
+        <details class="glow-card rounded-xl group">
+          <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+            Why does the popup close when I press Start?
+            <svg class="w-5 h-5 text-brand-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-surface-100/50 text-sm leading-relaxed">
+            This is by design. When the popup is open, it captures browser focus, which prevents clicks from reaching the target page (especially in games). Closing the popup ensures clicks are dispatched directly to the page. A live overlay appears showing real-time progress.
+          </div>
+        </details>
+
+        <details class="glow-card rounded-xl group">
+          <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+            How do I stop the auto clicker?
+            <svg class="w-5 h-5 text-brand-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-surface-100/50 text-sm leading-relaxed">
+            Press <span class="kbd">Ctrl+M</span> (or open the popup and click Stop). A "Auto Clicker Stopped" notification will briefly appear on the page to confirm. The auto clicker also stops automatically when the configured number of clicks is reached.
+          </div>
+        </details>
+
+        <details class="glow-card rounded-xl group">
+          <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+            What's the difference between Free and Pro?
+            <svg class="w-5 h-5 text-brand-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-surface-100/50 text-sm leading-relaxed">
+            The free version includes all core features but limits the minimum interval to 0.5 seconds, maximum clicks to 100, and multi-points to 3. The Pro version removes all limits — intervals as fast as 0.01s, unlimited clicks, and unlimited multi-point positions.
+          </div>
+        </details>
+
+        <details class="glow-card rounded-xl group">
+          <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+            Does it collect any data?
+            <svg class="w-5 h-5 text-brand-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-surface-100/50 text-sm leading-relaxed">
+            No. Auto Clicker Pro runs entirely in your browser. It makes zero network requests, collects no analytics, and stores all settings locally using Chrome's storage API. Your privacy is fully respected.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ FINAL CTA ═══════════ -->
+  <section class="py-20 sm:py-28 hero-bg relative overflow-hidden">
+    <div class="absolute inset-0 grid-pattern opacity-20"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-brand-400/8 blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative">
+      <h2 class="text-3xl sm:text-5xl font-bold text-white leading-tight">
+        Start Automating Your Clicks<br>
+        <span class="bg-gradient-to-r from-brand-400 to-emerald-400 bg-clip-text text-transparent">Right Now</span>
+      </h2>
+      <p class="mt-6 text-lg text-surface-100/50 max-w-xl mx-auto">
+        Free to install. No account needed. Works on every website. Download from the Chrome Web Store and start clicking in seconds.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://chromewebstore.google.com/detail/auto-clicker/nodhhggdoefnnopmipedkaogkggmmhjk" target="_blank"
+           class="btn-cta inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-400 hover:bg-brand-500 text-white font-bold rounded-xl text-lg transition-all shadow-xl shadow-brand-400/25 hover:shadow-brand-400/35 hover:scale-105">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Install Auto Clicker Pro — Free
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-surface-100/30">Compatible with Chrome, Edge, Brave, Opera, and all Chromium-based browsers.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="bg-brand-900 border-t border-surface-500/20 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-surface-100/30">&copy; 2026 OnlineGratis Chrome Extensions. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="text-sm text-surface-100/40 hover:text-surface-100/70 transition-colors">Homepage</a>
+        <a href="https://mousekeyrecorder.net/contact/" target="_blank" class="text-sm text-surface-100/40 hover:text-surface-100/70 transition-colors">Support</a>
+      </div>
     </div>
   </footer>
-<script type="text/javascript">	window.lhnJsSdkInit = function () { 		lhnJsSdk.setup = { 			application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e", 			application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb" 		}; 		lhnJsSdk.controls = [{ 			type: "hoc", 			id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e" 		}]; 	}; 	(function (d, s) { 		var newjs, lhnjs = d.getElementsByTagName(s)[0]; 		newjs = d.createElement(s); 		newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js"; 		lhnjs.parentNode.insertBefore(newjs, lhnjs); 	}(document, "script")); </script></body>
+
+  <!-- GTranslate -->
+  <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"languages":["en","fr","it","es","de","pt"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right","switcher_vertical_position":"top","float_switcher_open_direction":"bottom"}</script>
+  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+  <!-- LiveHelpNow -->
+  <script type="text/javascript">
+    window.lhnJsSdkInit = function () {
+      lhnJsSdk.setup = {
+        application_id: "46e208b4-6665-455d-a93a-8fe887ef8f3e",
+        application_secret: "3a6262c5d50445ff88ce497e8c68b08242c4f859229c4374bb"
+      };
+      lhnJsSdk.controls = [{
+        type: "hoc",
+        id: "a7b4b662-1c4c-484f-a648-42f4cb609f1e"
+      }];
+    };
+    (function (d, s) {
+      var newjs, lhnjs = d.getElementsByTagName(s)[0];
+      newjs = d.createElement(s);
+      newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js";
+      lhnjs.parentNode.insertBefore(newjs, lhnjs);
+    }(document, "script"));
+  </script>
+</body>
 </html>
