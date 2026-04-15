@@ -2,7 +2,7 @@
   RewriteEngine On
   RewriteCond %{HTTP_HOST} !^onlinegratis\.net$ [NC]
   RewriteRule ^(.*)$ https://onlinegratis.net/$1 [R=301,L]
-</IfModule>
+
 
 
     # Forza l'header per voice-calculator.php sovrascrivendo quello del server
